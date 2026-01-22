@@ -1,0 +1,126 @@
+*{
+margin: 0;
+padding: 0%;
+box-sizing: border-box;
+
+}
+
+.nav_bar{
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: 180px 2fr;
+    font-family: "Bebas Neue", sans-serif;
+    border-bottom: 1px solid black;
+
+}
+
+
+.link_home{
+    margin-left:10px;
+}
+.lista_opciones{
+    display:flex;
+    flex-direction: row;
+  
+  list-style: none;   
+  margin: 0;
+  padding: 0;
+
+  display: flex;      
+  gap: 20px;          
+}
+
+.lista_opciones a {
+  text-decoration: none; 
+  color: inherit;        
+}
+
+.lista_opciones a:hover {
+  text-decoration: none; 
+}
+
+a{
+  text-decoration: none;
+}
+
+
+.img_carrito{  
+    width: 30px;
+   
+}
+
+body{
+  font-family: "Bebas Neue", sans-serif;
+  font-style: normal;
+  overflow-x: hidden;
+}
+
+.h1_home{
+    display: none;
+}
+
+
+.h2_home{
+    text-align: center;
+}
+.box_main_home{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.box_main{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;   
+}
+
+
+.box_circle_logo{
+    width: 250px;
+  height: 250px;          
+  border: 1px solid black;
+  border-radius: 50%;
+  overflow: hidden;    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px ;
+  margin-bottom: 30px;
+}
+
+.logo{
+    margin-top: 4px;
+    width: 100%;
+    height: 143%;
+    object-fit: cover;  
+    
+}
+
+
+.marcas{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  
+    
+}
+
+
+.logo_nike{
+margin-top: 12px;
+}
+
+
+
+
+
+.ul {
+  list-style: none;
+  padding: 0; /* opcional, saca el sangrado */
+  margin: 0;
+}

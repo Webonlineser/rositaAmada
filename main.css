@@ -5,29 +5,134 @@ box-sizing: border-box;
 
 }
 
-.nav_bar{
-    display: grid;
-    flex-direction: row;
-    grid-template-columns: 180px 2fr;
-    font-family: "Bebas Neue", sans-serif;
-    border-bottom: 1px solid black;
+
+h1{
+  font-size: 30px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+
+/*Diseños externos*/
+html,body{
 
 }
 
+body:before{
+
+}
+.button_box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+button{
+  justify-content: center;
+  width: 150px;
+  text-align: center;
+  background:#1AAB8A;
+  color:#fff;
+  border-radius: 10px;
+  position:relative;
+  border: none;
+  height:70px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  
+}
+button:hover{
+  background:#fff;
+  border-radius: 10px;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+  border-radius: 10px;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+  border-radius: 10px;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+
+/*Diseños externos*/
+
+
+
+.link_1{
+  
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.nav_bar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    font-family: "Bebas Neue", sans-serif;
+    border-bottom: 1px solid black;
+    position: relative;
+
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+  background-color: bisque;
+  
+
+}
 
 .link_home{
     margin-left:10px;
+    text-decoration: none;
+    font-size: 18px;
+    
+    
 }
+.box_a_home{
+  background-color: blue;
+  min-width:80px;
+  max-width: 140px;
+}
+
+
+.menu {
+  display: none;
+}
+
+.menu.active {
+  display: flex;
+}
+
 .lista_opciones{
+    font-size: 13px;
     display:flex;
     flex-direction: row;
-  
-  list-style: none;   
-  margin: 0;
-  padding: 0;
-
-  display: flex;      
-  gap: 20px;          
+    list-style: none;   
+    margin: 0;
+    padding: 0;      
+    gap: 15px;          
 }
 
 .lista_opciones a {
@@ -49,10 +154,19 @@ a{
    
 }
 
+.btn_menu_home{
+  position: fixed;
+  right: 10px;
+}
+
 body{
   font-family: "Bebas Neue", sans-serif;
   font-style: normal;
   overflow-x: hidden;
+}
+
+.box_header{
+  background-color: aqua;
 }
 
 .h1_home{
@@ -124,3 +238,117 @@ margin-top: 12px;
   padding: 0; /* opcional, saca el sangrado */
   margin: 0;
 }
+
+
+
+
+/*BANNER HOME*/
+
+.banner_home{
+  border: 1px solid red;
+  background-color: blue;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 375px;
+  height: 120px;
+  
+}
+
+.box_banner{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+
+
+.footer{
+  border-top:1px solid #1AAB8A;
+  margin-top: 50px;
+  padding-top: 20px;
+
+
+}
+
+a{
+ 
+}
+
+.box_footer_redes ul{
+
+  display: flex;
+  flex-direction: row;
+ list-style: none;
+list-style-type: none;
+}
+
+.footer h2{
+  font-size: 22px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer a:visited,
+.footer a:hover,
+.footer a:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer a:hover{
+  color: #1AAB8A;
+}
+
+
+
+
+/*Circulo de redes*/
+
+.icon_contactos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+
+
+
+
+
+.a_circle {
+  width: 70px;        
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;  
+  display: inline-block; 
+  border:1px solid #1AAB8A;
+  box-shadow: 0 4px 10px black;
+
+}
+
+
+
+.a_circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    
+  display: block;      
+}
+
+

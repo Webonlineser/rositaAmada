@@ -24,3 +24,10 @@ function controlar() {
 
 console.log(Btn_menu + " este es el elemento capturado del dom" )
 
+
+
+
+
+
+/*Animaciones*/
+

@@ -5,14 +5,37 @@ box-sizing: border-box;
 
 }
 
+.insta_container{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  width: 100%;
+  height:fit-content;
+}
+
+
+
+.img_banner_insta{
+  width: 100%;
+
+}
+.box_img_banner_insta{
+  position: relative;
+  width: 100%;
+}
+
+
 
 
 
 .box_promo_envio{
 z-index: 999;
 position: fixed;
-margin-top:19px;
-top:30px;
+margin-top: 20px;
+top:37px;
 color: white;
 background-color:black;
 width:100%;
@@ -65,12 +88,13 @@ color:#fff;
 
 .lista_opciones_2{
    font-size: 15px;
-    display:flex;
-    flex-direction: row;
-    list-style: none;   
-    margin: 0;
-    padding: 0;      
-    gap: 15px;   
+   display:flex;
+   flex-direction: row;
+   list-style: none;   
+   margin: 0;
+   padding: 0;      
+   gap: 15px;   
+   position: relative;
 }
 
 
@@ -79,6 +103,8 @@ color:#fff;
   text-decoration: none; 
   color: inherit;        
 }
+
+
 .li_btn_cerrar{
   display: flex;
   flex-direction: row;
@@ -88,8 +114,9 @@ color:#fff;
 
 
 .btn_cerrar{
-width: 30px;
+width: 40px;
 border: none;
+height: 35px;
 overflow: hidden
 }
 
@@ -97,7 +124,7 @@ overflow: hidden
 
 .img_btn_cerrarmenu{
   width: 100%;
-  background-color: white;
+  background: white;
 }
 
 
@@ -108,9 +135,12 @@ overflow: hidden
 
 
 
-
 .box_btn_menu{
- background: transparent;
+  width: 100px;
+  height: 40px;
+padding: 5px;
+padding-top: 17px;
+
 }
 
 
@@ -120,7 +150,6 @@ overflow: hidden
 h1{
   font-size: 30px;
   text-align: center;
-  padding-top: 10px;
 }
 
 
@@ -128,22 +157,38 @@ h1{
 
 
 
+
 .btn_vertienda{
-  justify-content: center;
+  font-size: 15px;
+  letter-spacing: 2px;
+  font-family: "roboto";
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  text-decoration: none;
   width: 150px;
   text-align: center;
   background:black;
   color:#fff;
   position:relative;
   border: none;
-  height:70px;
-  padding:0 2em;
+  height:35px;
+  padding:0 1.4em;
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
   z-index: 1;
-  
 }
+
+
+
+
+
+.btn_vertienda a {
+  margin: 0 auto;
+}
+
+
 
 
 
@@ -171,7 +216,10 @@ h1{
 
 }
 
-
+.label_title {
+  font-size: 20px;
+  font-family: "roboto";
+}
 
 
 
@@ -198,17 +246,20 @@ h1{
 /*Diseños externos*/
 
 .btn_search{
+  height: 100%;
   border: none;
   justify-content: center;
+  background-color: white;
 }
 
 .btn_search:active {
   transform: scale(0.95);
-  background: #148f77;
+
 
 }
 
 .text_input{
+
   width: 100px;
 }
 
@@ -226,18 +277,15 @@ h1{
 
 .search{
 
-height: fit-content;
-background-color: red;
 display: flex;
 flex-direction: row;
 justify-content: center;
-background-color: transparent;
-width:40px;
+width: 65%;
 
 }
 
 .img_search{
-  width: 40px;
+  width: 60px;
   background-color: transparent;
 }
 
@@ -253,18 +301,16 @@ width:40px;
 
 
 .nav_bar{
-  background-color: red;
-    padding-top: 10px;
-    padding-bottom: 10px;
     display: flex;
     flex-direction: row;
     width: 100%;
-    font-family: "Bebas Neue", sans-serif;
+    font-family: "roboto", sans-serif;
     position: fixed;
     background-color: #fff;
     top: 0px;
     z-index:99999 ;
     position: fixed;
+    border-bottom: 1px solid black;
 }
 
 a{
@@ -273,6 +319,10 @@ a{
 
 }
 
+
+.a_op2_Carrito{
+  position: relative;
+}
 
 
 /* estilo de atajos*/
@@ -336,17 +386,16 @@ a{
 
 .section_novedades {
   margin-bottom: 30px;
-background-color: red;
   align-items: center;
   height: fit-content;
   margin-left:5px ;
-  margin-right: 5px;
   margin-top: 30px;
+  width: 100%;
   
 }
 
 .box_novedades{
-
+width: 100%;
 }
 
 .titulo_arrivasl{
@@ -364,7 +413,6 @@ background-color: red;
 }
 
 
-
 .box_productos_new::-webkit-scrollbar{
   display: none;
 }
@@ -376,15 +424,23 @@ background-color: red;
 }
 
 .box_Producto_new{
+  width: 100%;
   display: flex;
   flex-direction: column;
   flex: 0 0 auto;
   width: fit-content;
   scroll-snap-align: start;
   margin-bottom: 20px;
-
 }
 
+
+
+.contain_info{
+  width: 100%;
+margin-top: -15px;
+background-color: #1AAB8A;
+
+}
 
 .btn_comprar{
 border-radius: 10px;
@@ -405,9 +461,9 @@ color: white;
 .box_img_new{
 
   height:fit-content;
-  width: 175px;
+  width: 180px;
   height: 100%;
-  aspect-ratio: 1/1;
+
   overflow:hidden;
 }
 
@@ -450,27 +506,49 @@ color: white;
 /*Section New Arrivals*/
 
 .link_home{
+    width: fit-content;
     color: inherit;
-    margin-left:10px;
     text-decoration: none;
-    font-size: 13px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+
 }
 
 
-.box_a_home{
+.box_logo_nav{
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+}
 
-  min-width:40px;
-  max-width: 100px;
-  height: fit-content;
+.logo_nav{
+  width: 88px;
+  position: absolute;
+  top: -11px;
+  left: -14px;
+
+
+}
+
+
+.box_nav{
   display: flex;
+  flex-direction: column;
+  width: 40px;
+}
 
-
+.box_a_home{
+  width: fit-content;
+  display: flex;
 }
 
 
 .menu {
   display: none;
- 
 }
 
 
@@ -478,7 +556,6 @@ color: white;
 .menu.active {
   display: flex;
 }
-
 
 .menu_2{
   padding-left: 20px;
@@ -513,9 +590,11 @@ color: white;
 .box_carrito{
   display: flex;
   flex-direction: row;
-  position: relative;
-
+position: relative;
 }
+
+
+
 .box_contador {
   background-color: #1AAB8A;
   color: white;
@@ -526,8 +605,8 @@ color: white;
   flex-direction: row;
   justify-content: center;
   position: absolute;
-  top:0;
-  right: 0;
+  top:-1px;
+  right: 10px;
 
 }
 .contador{
@@ -556,15 +635,17 @@ display: end;
 
 
 .box_img_sider{
-  width: 25px;
-  height: 25px;
+  width: 50px;
+  height: fit-content;
 }
 
 .img_carrito_sider{
   width: 80%;
-  height: 18px;
+  height: 100%;
   margin-bottom: 8px;
 }
+
+
 
 .box_contador_sider{
   background-color: yellow;
@@ -579,26 +660,43 @@ display: end;
   top:-2px;
   right:6px;
   
-
 }
+
+
 
 .contador_Sider{
   position: absolute;
   top: -3px;
-  right: 6px;
+  right: 10px;
   height:10px;
   color: white;
   text-align: center;
 }
+
+
 /* CARRITO DE MODO MOBILE */
 
 
 .menu_h{
-  background-color: tomato;
+
   padding-bottom:25px;
   padding-top:25px;
   margin-bottom: 20px;
   
+}
+
+.titulo_menu_nav{
+font-size: 25px;
+}
+
+
+.box_politicas li{
+font-size: 25px;
+}
+
+.box_politicas{
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -606,11 +704,11 @@ display: end;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: #fff;
+  background-color: aquamarine;
   backdrop-filter: blur(5px);
-  border: 2px solid #1AAB8A;
-  width:300px;
-  height: fit-content;
+  width:360px;
+  height: 100vh;
+  overflow-y: auto;
   margin: 0;
   padding: 0;
   border-radius: 20px;
@@ -618,22 +716,54 @@ display: end;
   top: 32px;
   right:5px ;
   z-index: 999;
+
+}
+.icono_gen_m{
+  width: 33px;
+  padding-bottom: 15px;
+
+}
+.icono_gen_f{
+width: 38px;
 }
 
+.opciones_1{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 50px;
+  height: 330px;
+  padding: 0;
+  margin: 0;
+}
 
 .categorias_h{
-background-color: red;
+margin-top: 20px;
 padding-bottom:15px;
 padding-top:15px;
 }
 
 
 
+
+
+.categorias_h li{
+width: 100%;
+}
+
+
+
+
+.li_menu_mobile{
+  width: 100%;
+}
+
+
 .titulo_menu_nav{
   text-align: center;
   font-weight: 600;
-  font-size: 15px;
-  margin-top: 10px;
+  font-size: 25px;
+  margin-top: px;
   letter-spacing: 5px;
 }
 
@@ -643,15 +773,19 @@ padding-top:15px;
 .lista_opciones a {
   text-decoration: none; 
   color: inherit;
-  list-style: none;        
+  list-style: none;      
+  font-size: 25px;  
 }
 
+.box_contador_sider{
+  width: 35px;
+  height: 35px;
+}
 
 .lista_opciones li {
   list-style: none;
   padding-left: 8px;
   margin-top: 12px;
-
 }
 
 .lista_opciones a:hover {
@@ -661,9 +795,6 @@ padding-top:15px;
 a{
   text-decoration: none;
 }
-
-
-
 
 
 /*
@@ -687,8 +818,7 @@ Barra de filtrado y busqueda de productos
 
 .banner_prod{
 width: 100%;
-height: 150px;
-margin-left: 10px;
+height: 250px;
 background-color: #1AAB8A;
 
 }
@@ -763,14 +893,16 @@ background-color: #1AAB8A;
 /*
 Barra de filtrado y busqueda de productos 
 */
-.box_nav{
 
+
+
+
+
+.box_nav{
   position: sticky;
   top: 0;
   z-index: 9999;
   isolation: isolate;
-  margin-top: 30px;
-  background-color: red;
 
 }
 
@@ -781,11 +913,16 @@ Barra de filtrado y busqueda de productos
    
 }
 
+
 .btn_menu_home{
   position: fixed;
   right: 10px;
   border:none;
 }
+
+
+
+
 
 body{
   width: 100%;
@@ -796,6 +933,11 @@ body{
   overflow-x: hidden;
 }
 
+
+
+
+
+
 .box_header{
 width: 100%;
 }
@@ -803,6 +945,9 @@ width: 100%;
 
 
 /*cards info home*/
+
+
+
 
 
 .info_card{
@@ -814,11 +959,21 @@ width: 100%;
   background-color: #f0f0f0;
 }
 
+
+
+
+
 .box_btn_interfaz{
  border: none;
+height: 100px;
 }
 
+
+
+
+
 .box_info{
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -830,20 +985,27 @@ width: 100%;
 
 
 .box_info p {
-  font-size: 17px;
+  font-size: 12px;
   font-weight: bold;
   letter-spacing: 2px;
+  width: 260px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
 .box_btn_interfaz img:active {
-  
+ 
  scale: 1.1;
    transition: transform 0.1s ease;
 }
 
+
+
+
 .img_btn_interfaz{
   width: 100%;
+  
 }
 
 
@@ -851,7 +1013,11 @@ width: 100%;
 .h2_home{
     text-align: center;
 }
+
+
+
 .box_main_home{
+    margin-top: 50px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -890,6 +1056,38 @@ width: 100%;
 }
 
 
+/*medidas de logos de carrusel*/
+.marca img.logo_calvin{
+  height: 250px;
+}
+
+.marca img.logo_armani{
+  height: 250px;
+}
+
+.marca img.logo_miche{
+height: 250px;
+
+}
+
+.marca img.logo_esse{
+  height:50px;
+}
+
+
+.marca img{
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: .8;
+  transition: .3s;
+}
+
+
+/*medidas de logos de carrusel*/
+
+
 .marcas{
   padding: 18px 0;
   background: #fff;
@@ -912,7 +1110,7 @@ width: 100%;
   display: flex;
   width: fit-content;
   height: fit-content;
-  animation: scrollMarcas 27s linear infinite;
+  animation: scrollMarcas 60s linear infinite;
 
 }
 
@@ -921,14 +1119,6 @@ width: 100%;
   flex: 0 0 auto;
 }
 
-.marca img{
-  height: 60px;
-  width: auto;
-  object-fit: contain;
-  filter: grayscale(100%);
-  opacity: .8;
-  transition: .3s;
-}
 
 .marca img:hover{
   filter: grayscale(0);
@@ -941,7 +1131,7 @@ width: 100%;
     transform: translateX(0);
   }
   to{
-    transform: translateX(-50%);
+    transform: translateX(-70%);
   }
 }
 
@@ -977,12 +1167,13 @@ margin-top: 1px;
 
 
 .h1_home{
+  margin-top: 20px;
   font-size: 15px;
   font-family: roboto;
 }
 
 .p_home{
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-align: center;
   font-weight: bold;
   letter-spacing: 4px;
@@ -1005,7 +1196,7 @@ margin-top: 1px;
 .titulo_banner_1{
   text-align: start;
   font-size: 50px;
-  font-family: roboto;
+  font-family: "roboto";
   font-weight: 1000;
   color: white;
 }
@@ -1036,6 +1227,17 @@ margin-top: 1px;
 }
 
 
+.box_marcas_lista h3{
+  font-size: 30px;
+}
+
+.box_marcas_lista{
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  margin-top: 50px;
+  margin-left: 10px;
+}
 
 .box_banner p{
   position: absolute;
@@ -1053,11 +1255,6 @@ margin-top: 1px;
 }
 
 
-.btn_vertienda{
-
-}
-
-
 
 .box_banner img {
   width: 100%;
@@ -1066,11 +1263,105 @@ margin-top: 1px;
 }
 
 
+.btn_mas_lista{
+  margin-left: auto;
+  height: fit-content;
+  border: none;
+  margin-right: 10px;
+  background-color: transparent;
+}
+
+
+.box_list_marcas{
+  display: none;
+}
+
+.li_menu_marcas{
+  background-color: #1AAB8A;
+  font-size: 25px;
+}
+
+
+
+.box_politicas{
+  
+  background-color: black;
+  padding:4px;
+  height: 100px;
+  
+}
+
+.box_politicas p{
+  font-size: 20px;
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+  background-color: blue;
+  height: 100%;
+  align-content: center;
+
+}
+
+
+
+.box_h3_btn{
+  margin:0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+
+
+.box_h3_btn h3{
+
+  margin-left: 10px;
+
+}
+
+
+.btn_mas{
+  background: none;
+  margin-left: auto;
+  border: none;
+  margin-right: 10px;
+
+}
+
+
+.img_btn_mas{
+  width: 30px;
+  transition: transform 0.3s;
+}
+.box_politicas_li{
+  height: fit-content;
+}
+
+.politicas_li{
+  
+}
+
+.politicas_li.activo .box_politicas{
+   max-height: 200px;
+  opacity: 1;
+}
+
+.politicas_li.activo .img_btn_mas{
+  transform: rotate(45deg);
+}
 
 
 
 
 
+.box_politicas{
+ max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
 
 
 
@@ -1082,6 +1373,15 @@ margin-top: 1px;
   width: 100%;
 }
 
+
+
+/* cards desplegable con las politicas*/
+
+
+
+
+
+
 .box_footer_politicas{
   display: flex;
   flex-direction: column;
@@ -1091,8 +1391,10 @@ margin-top: 1px;
 
 
 
+
+
 .box_footer_politicas li {
-  text-align: center;
+  text-align: start;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -1145,6 +1447,7 @@ margin-top: 1px;
 .lista_categorias_footer li{
   margin-top:10px;
   margin-bottom: 10px;
+  font-size: 25px;
 }
 
 .lista_categorias_footer li:hover{
@@ -1257,9 +1560,8 @@ transform: scale(1.3);
   display: flex;
   flex-direction: column;
   width:100%;
-  margin-left: 10px;
-}
 
+}
 
 .prod_cards{
   padding-top:20px;
@@ -1273,8 +1575,6 @@ transform: scale(1.3);
 }
 
 .card_prod{
-
-
   view-timeline-name:--reveal;
   animation-name: show;
   animation-fill-mode: both;
@@ -1286,8 +1586,16 @@ transform: scale(1.3);
   align-items: center;
   border-radius: 20px;
   margin-top: 20px;
+  height: fit-content;
+  border-bottom-right-radius: 20px;
+  box-shadow: 2px 4px 4px -3px black;
+  padding-bottom: 15px;
+
 }
 
+.box_btn_comprar_producto{
+
+}
 
 
 
@@ -1339,8 +1647,7 @@ transform: scale(1.3);
   text-align: center;
   width: 100%;
   height: 170px;
-  border-bottom-right-radius: 20px;
-  box-shadow: 2px 4px 4px -3px black;
+
   justify-content: center;
   
 }
@@ -1379,6 +1686,27 @@ font-weight: bold;
 @media (min-width: 700px) and (max-width: 950px) {
 
 
+
+
+
+  /*insta y final*/
+  
+
+  .insta_container{
+
+}
+
+
+
+.img_banner_insta{
+
+
+}
+.box_img_banner_insta{
+
+}
+
+
   .banners{
   display: flex;
   flex-direction: column;
@@ -1406,6 +1734,7 @@ display: none;
 }
 
 
+
  
 }
 
@@ -1419,6 +1748,29 @@ display: none;
 
 
 @media (min-width: 429px) and (max-width: 700px) {
+
+
+
+
+
+  .insta_container{
+
+}
+
+
+
+.img_banner_insta{
+
+
+}
+
+
+.box_img_banner_insta{
+padding-left: 25px;
+padding-right:25px;
+}
+
+
 .box_banner{
   width: 100%;
 }
@@ -1429,6 +1781,7 @@ display: none;
 }
 
 
+
 }
 
 @media (min-width: 499px) and (max-width: 850px) {
@@ -1436,6 +1789,12 @@ display: none;
 
 
 
+.nav_bar{
+display: grid;
+grid-template-columns: 100px auto 10px 100px ;
+width: 100%;
+height: 61px;
+}
 
 .banners{
   display: flex;
@@ -1447,31 +1806,49 @@ display: none;
   
 }
   
-  
-  
-  
-  
-  .search{
-    display:none;
-   
-  }
 
   .img_search{
     width: 25px;
 
   }
 
+  .search{
+display: flex;
+width: 100%;
+margin: 0 auto;
+}
+
+.btn_search{
+  width: 40px;
+  height: 100%;
+}
+
+.img_search{
+width: 60px;
+}
+
+
 
   .box_input_busqueda{
-    display: flex;
+    display: none;
     flex-direction: row;
   width: 143px;
   font-size: 12px;
   letter-spacing: 2px;
   height: 30px;
   }
+
+  .lista_opciones_2{
+    display: none;
+    background-color:blue;
+    width: 100%;
+    text-align: center; 
+
+ }
+
   .lista_opciones_2 li{
-    width: 70%;
+    width: 100%;
+  font-size: 18px;
   }
 
   .btn_search{
@@ -1482,11 +1859,12 @@ display: none;
  
   .menu_2{
     padding: 0;
-    width: 70%;
+    width: 100%;
   }
 
 
   .box_input_busqueda{
+  display: none;
    margin-right: 20px;
    width: fit-content;
   }
@@ -1494,6 +1872,7 @@ display: none;
 
 
   .text_input{
+    display: none;
   font-family: roboto;
   text-align: center; 
   padding-top: 2px;
@@ -1506,30 +1885,12 @@ display: none;
     height: 22px;
   }
 
- 
-  .menu_2{
-    padding: 0;
-    width: 70%;
-  }
-
-
-  .box_input_busqueda{
-   margin-right: 10px;
-   
-
-  }
-
-  .text_input{
-   text-align: center; 
-   padding-top: 2px;
-  }
-  
   .banner_home{
     height: 400px;
   }
 
 .box_circle_logo{
-    width: 350px;
+  width: 350px;
   height: 350px;          
   border: 1px solid black;
   border-radius: 50%;
@@ -1539,11 +1900,8 @@ display: none;
   justify-content: center;
   margin-top: 30px ;
   margin-bottom: 50px;
+
 }
-
-
-
-
 
   .h1_home{
   font-size: 20px;
@@ -1561,10 +1919,7 @@ height: 120px;
     gap: 10px;
   }
   
-  .div_scroll{
 
-  }
-  
   
   
   
@@ -1573,7 +1928,11 @@ height: 120px;
   }
 
 .btn_menu_home{
-  display: none;
+  display: block;
+}
+
+.btn_menu_home img {
+width: 42px;
 }
 
 
@@ -1610,7 +1969,6 @@ height: 120px;
   height: auto;
 }
 
-
 .box_img_prod{
   height: 100%;
   margin-bottom: 10px;
@@ -1631,6 +1989,7 @@ height: 120px;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
+
 }
 
 
@@ -1640,10 +1999,15 @@ height: 120px;
  font-size: 35px;
 }
 
+
+.box_promo_envio{
+  margin-top: 24px;
+
+
 }
 
 
-
+}
 
 /*Escritorio*/
 
@@ -1653,30 +2017,92 @@ height: 120px;
 @media (min-width:800px) {
 
 
+
+
+  .info_card{
+
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .btn_menu_home{
+  display: block;
+
+ 
+}
+.btn_menu_home img {
+width: 42px;
+}
+
+  .box_input_busqueda{
+    display: none;
+  }
+
+.search{
+display: flex;
+width: 100%;
+}
+
+.btn_search{
+  width: 40px;
+  height: 100%;
+}
+
+.img_search{
+width: 60px;
+}
+
+.nav_bar{
+  display: grid;
+  grid-template-columns:50px auto 20px;
+}
+
+
+.menu_2{ 
+    display: none;
+    justify-content: center;
+    width: 80%;
+  }
+
+
+.a_op2{
+  font-size:20px;
+}
+
+
+
 .banners{
   display: grid;
   grid-template-columns: 1fr 1fr ;
-  grid-template-rows: 1fr 1fr ;
   justify-content: center;
   width:100%;
   align-items: center;
   padding: 2px;
 }
-.search{
-    display:none;
-  }
+
+.box_banner{
+  width: 100%;
+}
+.box_input_busqueda{
+  display: none;
+}
+
+
+.div_scroll{
+ height: 420px;
+}
+
 
 
 .box_input_busqueda{
-  display: flex;
+  display: none;
   flex-direction: row;
-
-  width: 190px;
+  width: 300px;
   font-size: 12px;
   letter-spacing: 2px;
-  height: 30px;
- 
+  height: 50px;
   }
+
 
 
 .img2{
@@ -1688,18 +2114,15 @@ height: 120px;
 }
 
 .text_input{
-  text-align: center;
+  padding-left: 5px;
+  width: 100%;
+  font-size: 20px;
+  height: 40px;
 }
 
-
-.img_search{
-
-    width: 25px;
-  
-}
 
   .box_circle_logo{
-    width: 450px;
+  width: 450px;
   height: 450px;          
   border: 1px solid black;
   border-radius: 50%;
@@ -1725,42 +2148,56 @@ font-size: 50px;
  }
 
   .box_productos_new{
-    column-gap: 20px;
+    column-gap: 10px;
+    width:100% ;
   }
 
   .box_Producto_new{
-    width: 260px;
+    width: 250px;
+
   }
+
+.box_img_new{
+    width: 100%;
+  }
+
 
 .marca img {
 height: 100px;
 padding: 10px;
 }
 
-.box_img_new{
-  width: 100%;
+
+.box_contador{
+  width: 25px;
+  height: 25px;
+  flex-direction: column;
+  text-align: center;
+  top: -4px;
+  right: -1px;
 }
 
-
+.contador{
+  font-size: 18px;
+   margin: 0 auto;
+}
 
 .container_atajos{
   display: grid;
-  grid-template-columns: repeat(3 , 1fr);
+  grid-template-columns: repeat(2 , 1fr);
 }
 
 
-
 .card_prod{
+
 width: 100%;
- view-timeline-name:--reveal;
-  animation-name: show;
-  animation-fill-mode: both;
-  animation-timeline:--reveal;
-  animation-range: entry 15% cover 40%;
+view-timeline-name:--reveal;
+animation-name: show;
+animation-fill-mode: both;
+animation-timeline:--reveal;
+animation-range: entry 15% cover 40%;
+
 } 
-
-
-
 
 .prod_cards{
   width: 100%;
@@ -1771,13 +2208,84 @@ width: 100%;
 }
 
 
-  .btn_menu_home{
-    display: none;
+.box_promo_envio{
+  margin-top: 24px;
+}
+
+
+}
+
+
+
+
+@media (min-width:1124px) {
+
+
+
+ .info_card{
+
+    padding-left: 250px;
+    padding-right: 250px;
   }
+
+
+.img_carrito{
+  width: 40px;
+}
+
+.a_op2_Carrito{
+  font-size: 20px;
+}
+
+.btn_search{
+  width: 42px;
+  height: 100%;
+}
+
+.nav_bar{
+display:grid;
+
+grid-template-columns: 100px 250px 60% 1fr;
+width: 100%;
+}
+
+
 .menu_2{ 
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
   }
+
+
+
+.lista_opciones_2{
+    display:flex;
+  }
+
+
+
+
+.li_op2{
+  margin-top: 10px;
 }
+
+
+
+.a_op2{
+  font-size:20px;
+}
+
+
+
+.box_btn_menu{
+  display: none;
+}
+
+}
+
+
+
 
 /*fin de la query*/
 

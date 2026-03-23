@@ -4,7 +4,9 @@ padding: 0%;
 box-sizing: border-box;
 
 }
-
+html{
+  margin-right: 0;
+}
 .insta_container{
   margin-top: 50px;
   display: flex;
@@ -72,8 +74,20 @@ display: none;
 
 
 
+.box_tollbar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: black;
+}
 
-
+.box_tollbar div select{
+  width: 200px;
+  height: 30px;
+  text-align: center;
+}
 
 .box_promo_envio h3 {
 padding-top:8px;
@@ -81,8 +95,11 @@ font-size: 12px;
 letter-spacing: 2px;
 font-family: roboto;
 color:#fff;
- 
+
 }
+
+
+
 
 /*Menu mobile*/
 
@@ -106,15 +123,19 @@ color:#fff;
 
 
 .li_btn_cerrar{
+ background-color: white;
   display: flex;
+  align-items: center;
   flex-direction: row;
-  justify-content: end;
+  
+  
 }
 
 
 
 .btn_cerrar{
 width: 40px;
+margin-left: auto;
 border: none;
 height: 35px;
 overflow: hidden
@@ -136,11 +157,10 @@ overflow: hidden
 
 
 .box_btn_menu{
-  width: 100px;
-  height: 40px;
+width: 100px;
+height: 40px;
 padding: 5px;
 padding-top: 17px;
-
 }
 
 
@@ -163,6 +183,7 @@ h1{
   letter-spacing: 2px;
   font-family: "roboto";
   display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: row;
   text-decoration: none;
@@ -173,7 +194,6 @@ h1{
   position:relative;
   border: none;
   height:35px;
-  padding:0 1.4em;
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
@@ -185,7 +205,6 @@ h1{
 
 
 .btn_vertienda a {
-  margin: 0 auto;
 }
 
 
@@ -216,11 +235,49 @@ h1{
 
 }
 
-.label_title {
+
+.option{
+  font-family:"roboto";
   font-size: 20px;
-  font-family: "roboto";
 }
 
+
+
+.label_title_categorias{
+ letter-spacing: 4px;
+  font-size: 20px;
+  font-family: "roboto";
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 10px;
+}
+
+
+.label_title {
+  letter-spacing: 3px;
+  font-size: 20px;
+  font-family: "roboto";
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 10px;
+}
+.label_title_marcas{
+  letter-spacing: 11px;
+  font-size: 20px;
+  font-family: "roboto";
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 10px;
+}
+
+.label_title_talle{
+ letter-spacing: 14px;
+  font-size: 20px;
+  font-family: "roboto";
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 10px;
+}
 
 
 .btn_vertienda:after{
@@ -676,17 +733,28 @@ display: end;
 
 /* CARRITO DE MODO MOBILE */
 
+.ul_lista_categorias{
+  padding: 0;
+  margin: 0;
 
-.menu_h{
-
-  padding-bottom:25px;
-  padding-top:25px;
-  margin-bottom: 20px;
-  
+}
+.ul_lista_categorias li a {
+  color: black; 
 }
 
-.titulo_menu_nav{
-font-size: 25px;
+
+.menu_h{
+  margin-top: 10px;
+  padding-bottom: 20px;
+}
+
+.titulo_nav_H2{
+text-align: center;
+padding: 10px;
+font-size: 40px;
+font-family:"roboto";
+background-color:black;
+color:white;
 }
 
 
@@ -704,8 +772,7 @@ font-size: 25px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: aquamarine;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(100px);
   width:360px;
   height: 100vh;
   overflow-y: auto;
@@ -713,9 +780,10 @@ font-size: 25px;
   padding: 0;
   border-radius: 20px;
   position: fixed;
-  top: 32px;
-  right:5px ;
+  top: 30px;
+  right:2px ;
   z-index: 999;
+
 
 }
 .icono_gen_m{
@@ -737,9 +805,10 @@ width: 38px;
   margin: 0;
 }
 
+
+
+
 .categorias_h{
-margin-top: 20px;
-padding-bottom:15px;
 padding-top:15px;
 }
 
@@ -756,15 +825,52 @@ width: 100%;
 
 .li_menu_mobile{
   width: 100%;
+  color: inherit;
+   
+}
+.li_menu_mobile a{
+  color: black;
+
+}
+
+.a_sale{
+  color: white;
+  width: 100%;
+  
+}
+
+
+.li_menu_mobile_sale{
+ background-color:#1AAB8A ;
+ background: linear-gradient(254deg,rgba(26, 171, 138, 1) 11%, rgba(0, 0, 0, 1) 26%);
+}
+
+.li_menu_mobile_sale:hover{
+
+ background: linear-gradient(254deg,rgba(26, 171, 138, 1), rgba(10, 10, 10, 1));
+  background-size: 200% 200%;
+  background-position: left;
+  transition: background-position 0.5s ease;
+background-position: right;
+}
+
+
+.lista_marcas li a {
+  color: black;
+}
+.lista_marcas li a:hover{
+  color:#1AAB8A;
 }
 
 
 .titulo_menu_nav{
+  height: 40px;
   text-align: center;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 25px;
-  margin-top: px;
   letter-spacing: 5px;
+  color: white;
+  background-color: black;
 }
 
 
@@ -772,7 +878,6 @@ width: 100%;
 
 .lista_opciones a {
   text-decoration: none; 
-  color: inherit;
   list-style: none;      
   font-size: 25px;  
 }
@@ -806,8 +911,16 @@ Barra de filtrado y busqueda de productos
 
 
 /*         banner*/
+.tollbar{
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
 
+.tol
 
 .ordenar{
   margin-top:15px ;
@@ -815,6 +928,42 @@ Barra de filtrado y busqueda de productos
   margin-left: 10px;
 }
 
+
+.btn_filtrar{
+  font-size: 15px;
+  letter-spacing: 2px;
+  font-family: "roboto";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  text-decoration: none;
+  width: 150px;
+  text-align: center;
+  background:black;
+  color:#fff;
+  position:relative;
+  border: none;
+  height:35px;
+  cursor:pointer;
+  transition:1000ms ease all;
+  outline:none;
+  z-index: 1;
+}
+
+.btn_filtrar:hover{
+  scale: 1.1;
+}
+
+
+
+
+.box_button_filtrar{
+  display:flex ;
+  flex-direction:row;
+  justify-content: center;
+  margin-top: 15px;
+}
 
 .banner_prod{
 width: 100%;
@@ -1146,18 +1295,24 @@ height: 250px;
 }
 
 .lista_marcas {
+height: fit-content;
   text-align: center;
+  margin:0;
+  padding: 0;
   
 }
 
 .lista_marcas li{
-  margin-top:10px;
-  margin-bottom: 10px;
+  margin-top:5px;
+  margin-bottom: 5px;
   font-size: 25px;
+  
+
 }
 
 .lista_marcas li:hover{
-  transform: scale(1.3);
+  transform: scale(1.2);
+  
 }
 
 
@@ -1230,6 +1385,21 @@ margin-top: 1px;
 .box_marcas_lista h3{
   font-size: 30px;
 }
+.box_marcas {
+  height: fit-content;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.box_marcas.active {
+    max-height: 700px; /* o auto con otra técnica */
+}
+
+.rotate {
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
+}
 
 .box_marcas_lista{
   display: flex;
@@ -1274,6 +1444,7 @@ margin-top: 1px;
 
 .box_list_marcas{
   display: none;
+  height: fit-content;
 }
 
 .li_menu_marcas{
@@ -1285,7 +1456,8 @@ margin-top: 1px;
 
 .box_politicas{
   
-  background-color: black;
+  background: #1AAB8A;
+background: linear-gradient(254deg,rgba(26, 171, 138, 1) 11%, rgba(0, 0, 0, 1) 26%);
   padding:4px;
   height: 100px;
   
@@ -1296,10 +1468,10 @@ margin-top: 1px;
   width: 80%;
   text-align: center;
   margin: 0 auto;
-  background-color: blue;
+  background-color: transparent;
   height: 100%;
   align-content: center;
-
+  color:white;
 }
 
 
@@ -1329,6 +1501,16 @@ margin-top: 1px;
   margin-right: 10px;
 
 }
+.btn_marcas{
+   background: none;
+  margin-left: auto;
+  border: none;
+  margin-right: 10px;
+}
+.img_btn_marcas{
+ width: 30px;
+  transition: transform 0.3s;
+}
 
 
 .img_btn_mas{
@@ -1336,12 +1518,12 @@ margin-top: 1px;
   transition: transform 0.3s;
 }
 .box_politicas_li{
+  margin: 0;
+  padding: 0;
   height: fit-content;
 }
 
-.politicas_li{
-  
-}
+
 
 .politicas_li.activo .box_politicas{
    max-height: 200px;
@@ -1353,6 +1535,29 @@ margin-top: 1px;
 }
 
 
+.box_marcas.activo .img_btn_marcas{
+  transform: rotate(45deg);
+}
+
+.img_btn_marcas {
+    transition: transform 0.3s ease;
+}
+
+/* ROTACIÓN */
+.marcas_li.activo .img_btn_marcas {
+    transform: rotate(45deg);
+}
+
+.box_marcas {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.marcas_li.activo .box_marcas {
+
+    max-height: 1000px; /* o 2000px si querés olvidarte */
+}
 
 
 
@@ -1367,13 +1572,15 @@ margin-top: 1px;
 
 
 .footer{
-  border-top:1px solid #1AAB8A;
-  margin-top:50px;
-  padding-top:20px;
+
   width: 100%;
+  height: fit-content;
 }
 
+.box_footer_creditos{
+  display: none;
 
+}
 
 /* cards desplegable con las politicas*/
 
@@ -1385,11 +1592,19 @@ margin-top: 1px;
 .box_footer_politicas{
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
   height: fit-content;
 }
 
 
+.box_footer_politicas h2 {
+  height: 45px;
+ color: white;
+ background-color: black;
+ text-align: center;
+  font-weight: 600;
+  font-size: 35px;
+  letter-spacing: 5px;
+}
 
 
 
@@ -1399,21 +1614,25 @@ margin-top: 1px;
   margin-bottom: 5px;
 }
 
+.box_footer_redes{
 
+  top: 5;
+  width: 100%;
+  background-color:black;
+}
 
 .box_footer_redes ul{
   display: flex;
   flex-direction: row;
   list-style: none;
   list-style-type: none;
+  background-color: #1AAB8A;
 }
 
 .footer h2{
-  font-size: 25px;
   line-height: 1.4;
   text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+ 
 }
 
 
@@ -1458,11 +1677,16 @@ transform: scale(1.3);
 /*Circulo de redes*/
 
 .icon_contactos{
+    width: 90%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     margin-top: 50px;
     margin-bottom: 50px;
+
+   
+    height: fit-content;
     view-timeline-name:--reveal;
     animation-name: show;
     animation-fill-mode: both;
@@ -1471,13 +1695,72 @@ transform: scale(1.3);
 
 }
 
+.box_red_1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 1) 40%, rgba(26, 171, 138, 1) 98%);  width: 200px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.box_red_1:hover{
+scale: 1.1;
+}
+
+
+.box_red_1 h4{
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.box_footer_categorias{
+  margin-top:20px;
+}
+.box_redes{
+  background-color: black;
+  width: 100%;
+ color: red;
+}
+
+box
+
+.box_titulos_redes{
+  margin-bottom: 60px;
+  height: 100px;
+  background-color: red;
+  background: #1AAB8A;
+  background: linear-gradient(180deg, rgba(26, 171, 138, 1) 4%, rgba(0, 0, 0, 1) 62%);
+  
+}
+
+.p_redes{
+color: white;
+text-align: center;
+}
+
+.titulo_redes{
+  color: white;
+  font-family: "roboto";
+  font-size: 40px;
+  letter-spacing: 6px;
+}
+
+.a_circle :hover{
+  scale: 1.1;
+
+}
 
 
 
 
 
 .a_circle {
-  
   width: 70px;        
   height: 70px;
   border-radius: 50%;
@@ -1516,8 +1799,6 @@ transform: scale(1.3);
 .container_atajos div{
   height: 250px;
   border-radius: 10px;
-
-  
 
 }
 
@@ -1560,14 +1841,15 @@ transform: scale(1.3);
   display: flex;
   flex-direction: column;
   width:100%;
-
+  margin-bottom: 100px;
+  
 }
 
 .prod_cards{
   padding-top:20px;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 156px);
+  grid-template-columns: repeat(2,180px);
   flex-wrap: wrap;
   justify-content:center ;
   align-items: center;
@@ -1582,7 +1864,7 @@ transform: scale(1.3);
   animation-range: entry 25% cover 40%;
   display: flex;
   flex-direction: column;
-  width: 160px;
+  width: 170px;
   align-items: center;
   border-radius: 20px;
   margin-top: 20px;
@@ -1594,6 +1876,9 @@ transform: scale(1.3);
 }
 
 .box_btn_comprar_producto{
+justify-content: center;
+align-items: center;
+display: flex;
 
 }
 
@@ -1686,7 +1971,12 @@ font-weight: bold;
 @media (min-width: 700px) and (max-width: 950px) {
 
 
+.box_tollbar{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 
+}
 
 
   /*insta y final*/
@@ -1945,9 +2235,11 @@ width: 42px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 .prod_cards{
+
   padding:10px 10px;
   margin-left: 10px;
   margin-right: 10px;
@@ -2017,6 +2309,19 @@ width: 42px;
 @media (min-width:800px) {
 
 
+.icon_contactos{
+  display: flex;
+  flex-direction: row;
+  scale: 1.1;
+}
+
+.box_tollbar{
+  display: flex;
+flex-direction: row;
+height: 100px;
+justify-content: center;
+align-items: center;
+}
 
 
   .info_card{

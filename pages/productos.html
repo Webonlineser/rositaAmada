@@ -67,13 +67,10 @@
            
 
          <div id="menu" class="menu">
-                   <div class="lista_opciones">
-                   
+                   <div class="lista_opciones">             
                             <div class="categorias_h">
-
-                                <li class="li_btn_cerrar"><button id="btn_cerrar" class="btn_cerrar"><img class="img_btn_cerrarmenu" src="./asset/icons/close_cross_icon_128690.ico" alt=""></button></li>
-                            
-                              <h2 class="titulo_menu_nav">ROSITAAMADA</h2>
+                                <li class="li_btn_cerrar"><button id="btn_cerrar" class="btn_cerrar"><img class="img_btn_cerrarmenu" src="/asset/icons/close_cross_icon_128690.ico" alt=""></button></li>
+                                <h2 class="titulo_nav_H2">ROSITAAMADA</h2>
                                 
                             <li class="li_menu_mobile"><a href="">Destacados</a></li>
                             <li class="li_menu_mobile"><a href="">Hombre</a></li>
@@ -89,22 +86,22 @@
                                 
                                 <div class="box_list_marcas">
                                         <ul class="lista_marcas">              
-                                            <li><a href="/pages/productos.html">Adidas</a></li>
-                                            <li><a href="/pages/productos.html">Armania</a></li>
-                                            <li><a href="/pages/productos.html">Calvin Klein</a></li>
-                                            <li><a href="/pages/productos.html">Diesel</a></li>
-                                            <li><a href="/pages/productos.html">Essential</a></li>
-                                            <li><a href="/pages/productos.html">Guess</a></li>
+                                            <li><a href="/pages/productos.html">ADIDAS</a></li>
+                                            <li><a href="/pages/productos.html">ARMANI</a></li>
+                                            <li><a href="/pages/productos.html">CALVIN KLEIN</a></li>
+                                            <li><a href="/pages/productos.html">DISESL</a></li>
+                                            <li><a href="/pages/productos.html">ESSENTIALS</a></li>
+                                            <li><a href="/pages/productos.html">GUEES</a></li>
                                             <li><a href="/pages/productos.html">M&M</a></li>
-                                            <li><a href="/pages/productos.html">Jordan</a></li>
-                                            <li><a href="/pages/productos.html">Mitchell and ness</a></li>
-                                            <li><a href="/pages/productos.html">Lacoste </a></li>
-                                            <li><a href="/pages/productos.html">Nike</a></li>
-                                            <li><a href="/pages/productos.html">Polo</a></li>
-                                            <li><a href="/pages/productos.html">Puma </a></li>
-                                            <li><a href="/pages/productos.html">Sergio tacchini </a></li>
-                                            <li><a href="/pages/productos.html">Tommy Hilfiger</a></li>
-                                            <li><a href="/pages/productos.html">Zara</a></li>
+                                            <li><a href="/pages/productos.html">JORDAN</a></li>
+                                            <li><a href="/pages/productos.html">MITCHELL AND NESS</a></li>
+                                            <li><a href="/pages/productos.html">LACOSTE</a></li>
+                                            <li><a href="/pages/productos.html">NIKE</a></li>
+                                            <li><a href="/pages/productos.html">POLO</a></li>
+                                            <li><a href="/pages/productos.html">PUMA</a></li>
+                                            <li><a href="/pages/productos.html">SERGIO TACCHINI</a></li>
+                                            <li><a href="/pages/productos.html">TOMMY HILFIGER</a></li>
+                                            <li><a href="/pages/productos.html">ZARA</a></li>
                                          </ul>
                                 </div>
                          
@@ -114,10 +111,12 @@
                      <div class="menu_h">                      
                           
                           <h2 class="titulo_menu_nav">CATEGORIAS</h2>
+                    <ul class="ul_lista_categorias">
                             <li><a href="/pages/productos.html">Todos los productos</a></li>
                             <li><a href="#novedades">Novedades</a></li>
                             <li><a href="">contacto</a></li>
-                            <li class="carrito_"><a class="box_carrito_sider" href=""><p class="p_carrito">Mi Carrito</p><div class="box_img_sider"><img class="img_carrito_sider" src="./asset/icons/carrito.png" alt="icono carrito"></div><div class="box_contador_sider"><p class="contador_Sider">0</p></div></a></li>
+                            <li class="carrito_"><a class="box_carrito_sider" href=""><p class="p_carrito">Mi Carrito</p><div class="box_img_sider"><img class="img_carrito_sider" src="/asset/icons/carrito.png" alt="icono carrito"></div><div class="box_contador_sider"><p class="contador_Sider">0</p></div></a></li>
+                         </ul>
                     </div>
 
                     <div class="box_footer_politicas">
@@ -145,354 +144,106 @@
 
 
 <div class="banner_prod"><img src="" alt="banner"></div>
-<div class="tool_bar">
+    <div class="tool_bar">
 
+                    <nav class="breadcrumb" aria-label="Ruta de navegación">
+                <ol class="breadcrumb_list" id="breadcrumb">
 
-    <nav class="breadcrumb" aria-label="Ruta de navegación">
-  <ol class="breadcrumb_list" id="breadcrumb">
+                    <li class="breadcrumb_item">
+                    <a class="breadcrumb_link" data-level="home">Inicio</a>
+                    </li>
 
-    <li class="breadcrumb_item">
-      <a class="breadcrumb_link" data-level="home">Inicio</a>
-    </li>
+                    <li class="breadcrumb_item">
+                    <a class="breadcrumb_link" data-level="catalogo">Catálogo</a>
+                    </li>
 
-    <li class="breadcrumb_item">
-      <a class="breadcrumb_link" data-level="catalogo">Catálogo</a>
-    </li>
+                    <!-- estos 2 después los va a crear JS -->
+                    <li class="breadcrumb_item breadcrumb_dynamic"></li>
+                    <li class="breadcrumb_item breadcrumb_dynamic"></li>
 
-    <!-- estos 2 después los va a crear JS -->
-    <li class="breadcrumb_item breadcrumb_dynamic"></li>
-    <li class="breadcrumb_item breadcrumb_dynamic"></li>
-
-  </ol>
-</nav>
-
+                </ol>
+            </nav>
   
 </div>
-    
-<div class="filtros"></div>
-  <div class="ordenar">
-  <label class="label_title">Ordenar por:</label>
-  <select>
-    <option>Más vendidos</option>
-    <option>Precio: menor a mayor</option>
-    <option>Precio: mayor a menor</option>
-    <option>Novedades</option>
-  </select>
-</div>
+           
+    <div class="box_tollbar">
+
+                
+                <div class="ordenar">
+                    <label class="label_title">Ordenar por:</label>
+                    <select id="filtro_orden">
+                        <option class="option">Más vendidos</option>
+                        <option class="option">Precio: menor a mayor</option>
+                        <option class="option">Precio: mayor a menor</option>
+                        <option class="option">Novedades</option>
+                    </select>
+                </div>
 
 
 
 
-<div class="ordenar">
-  <label class="label_title">Categorias:</label>
-  <select>
-    <option>Todos</option>
-    <option>Remeras</option>
-    <option>Pantalones</option>
-    <option>Buzos</option>
-    <option>Camperas</option>
-    <option>accesorios</option>
-    <option>zapatillas</option>
-    
-  </select>
-</div>
+            <div class="ordenar">
+            <label class="label_title_categorias">Categorias:</label>
+            <select id="filtro_categoria" >
+                <option class="option">Todos</option>
+                <option class="option">Remeras</option>
+                <option class="option">Pantalones</option>
+                <option class="option">Buzos</option>
+                <option class="option">Camperas</option>
+                <option class="option">accesorios</option>
+                <option class="option">zapatillas</option>
+                
+            </select>
+            </div>
 
-<div class="ordenar">
-  <label class="label_title">Marcas: </label>
-  <select>
-    <option>TODAS</option>
-    <option>ADIDAS</option>
-    <option>ARMANI</option>
-    <option>CALVIN KLEIN</option>
-    <option>DIESEL</option>
-    <option>ESSENCIAL</option>
-    <option>GUESS</option>
-    <option>JORDAN</option>
-    <option>MITCHELL AND NESS</option>
-    <option>LACOSTE</option>
-    <option>NIKE</option>
-    <option>PUMA</option>
-    <option>POLO</option>
-    <option>SERGIO TACCHINI</option>
-    <option>TOMY HILFIGER</option>
-  </select>
-</div>
+                <div class="ordenar">
+                   <label class="label_title_talle">TALLE:</label>
+                    <select id="filtro_talle">
+                        <option class="option">XS</option>
+                        <option class="option">S</option>
+                        <option class="option">M</option>
+                        <option class="option">XL</option>
+                        <option class="option">XXL</option>
+                        
+                        
+                    </select>
+                </div>
+
+                <div class="ordenar">
+                <label class="label_title_marcas">Marcas: </label>
+                  <select id="filtro_marca">
+                        <option class="option" >TODAS</option>
+                        <option class="option" >ADIDAS</option>
+                        <option class="option" >ARMANI</option>
+                        <option class="option" >CALVIN KLEIN</option>
+                        <option class="option" >DIESEL</option>
+                        <option class="option" >ESSENCIAL</option>
+                        <option class="option" >GUESS</option>
+                        <option class="option" >JORDAN</option>
+                        <option class="option" >MITCHELL AND NESS</option>
+                        <option class="option" >LACOSTE</option>
+                        <option class="option" >NIKE</option>
+                        <option class="option" >PUMA</option>
+                        <option class="option" >POLO</option>
+                        <option class="option" >SERGIO TACCHINI</option>
+                        <option class="option" >TOMY HILFIGER</option>
+                    </select>
+                </div>
 
 
 
+    </div>
+
+                    <div class="box_button_filtrar">
+                    <button class="btn_filtrar" id="btn_filtrar">FILTRAR</button>
+
+                    </div>
 
 
 <main class="box_main_productos">
 
 
-    <div class="prod_cards">
-        <div class="card_prod">
-            <a class="link_productos" href="">
-            <div class="box_img_prod">
-                <img class="img_prod" src="/fotos de wsp/campe_1.jpeg">
-            </div>
-          </a>
-        <div class="card_des">
-            <p class="ingreso">New Prodsuct</p>
-            <p class="nombre_prod">Adidas Original Pumas</p>
-            <p class="des_prod">Remera hombre estampada</p>
-            <p class="precio">$110.100</p>
-        </div>
-          <div class="box_btn_comprar_producto">
-             <a class="btn_vertienda" id="btn_comprar_producto" href="/pages/detalle_pro.html">COMPRAR</a>
-        </div> 
-        </div>
-         
-
-
-
-
-    
-        <div class="card_prod">
-          <a class="link_productos" href="/pages/detalle_pro.html">
-            <div class="box_img_prod">
-                <img class="img_prod" src="/fotos de wsp/campe_1.jpeg">
-            </div>
-              </a>
-        <div class="card_des">
-            <p class="ingreso">New product</p>
-            <p class="nombre_prod">Adidas Original Pumas</p>
-            <p class="des_prod">Remera hombre estampada</p>
-            <p class="precio">$110.000</p>
-        </div>
-          <div class="box_btn_comprar_producto">
-             <a class="btn_vertienda" id="btn_comprar_producto" href="/pages/detalle_pro.html">COMPRAR</a>
-        </div> 
-      
-        </div>
-
-
-
-       
-        <div class="card_prod">
-        <a class="link_productos" href=""> 
-            <div class="box_img_prod">
-                     <img class="img_prod" src="/fotos de wsp/panta_1.jpeg">
-            </div>
-        </a>
-        <div class="card_des">
-            <p class="ingreso">New Product</p>
-            <p class="nombre_prod">Adidas Original Pumas</p>
-            <p class="des_prod">Remera hombre estampada</p>
-            <p class="precio">$110.000</p>
-        </div>
-          <div class="box_btn_comprar_producto">
-             <a class="btn_vertienda" id="btn_comprar_producto" href="/pages/detalle_pro.html">COMPRAR</a>
-        </div> 
-        
-        </div>
-      
-      
-      
-
-   
-        <div class="card_prod">
-             <a class="link_productos" href="">
-            <div class="box_img_prod">
-                     <img class="img_prod" src="/fotos de wsp/buzo_6.jpeg">
-            </div>
-            </a>
-
-        <div class="card_des">
-            <p class="ingreso">New Product</p>
-            <p class="nombre_prod">Adidas Original Pumas</p>
-            <p class="des_prod">Remera hombre estampada</p>
-            <p class="precio">$110.000</p>
-        </div>
-          <div class="box_btn_comprar_producto">
-            <a class="btn_vertienda" id="btn_comprar_producto" href="/pages/detalle_pro.html">COMPRAR</a>
-        </div> 
-        
-        </div>
-    
-
-
-
-    
-        <div class="card_prod">
-            <a class="link_productos" href="">
-            <div class="box_img_prod">
-                     <img class="img_prod" src="/fotos de wsp/buzo_5.jpeg">
-            </div>
-            </a> 
-        <div class="card_des">
-            <p class="ingreso">New Product</p>
-            <p class="nombre_prod">Adidas Original Pumas</p>
-            <p class="des_prod">Remera hombre estampada</p>
-            <p class="precio">$110.000</p>
-        </div>
-          <div class="box_btn_comprar_producto">
-            <a class="btn_vertienda" id="btn_comprar_producto" href="/pages/detalle_pro.html">COMPRAR</a>
-        </div> 
-        
-        </div>
-         
-
-
-
-      
-        <div class="card_prod">
-            <a class="link_productos" href="">
-                <div class="box_img_prod">
-                        <img class="img_prod" src="/fotos de wsp/panta_2.jpeg">
-                </div> 
-            </a>  
-        <div class="card_des">
-            <p class="ingreso">New Product</p>
-            <p class="nombre_prod">Adidas Original Pumas</p>
-            <p class="des_prod">Remera hombre estampada</p>
-            <p class="precio">$120.000</p>
-        </div>
-          <div class="box_btn_comprar_producto">
-            <a class="btn_vertienda" id="btn_comprar_producto" href="/pages/detalle_pro.html">COMPRAR</a>
-        </div> 
-         
-        </div>
-   
-
-
-
-    
-        <div class="card_prod">
-            <a class="link_productos" href="">
-                <div class="box_img_prod">
-                        <img class="img_prod" src="/fotos de wsp/buzo_1.jpeg">
-                </div>
-            </a>
-        <div class="card_des">
-            <p class="ingreso">New Product</p>
-            <p class="nombre_prod">Adidas Original Pumas</p>
-            <p class="des_prod">Remera hombre estampada</p>
-            <p class="precio">$112.000</p>
-        </div>
-          <div class="box_btn_comprar_producto">
-             <a class="btn_vertienda" id="btn_comprar_producto" href="/pages/detalle_pro.html">COMPRAR</a>
-        </div> 
-        
-        </div>
-
-
-
-
-
-
-
-
-  
-        <div class="card_prod">
-          <a class="link_productos" href="">
-                <div class="box_img_prod">
-                        <img class="img_prod" src="/fotos de wsp/zapa_5.jpeg">
-                </div>
-         </a>
-        <div class="card_des">
-            <p class="ingreso">New Product</p>
-            <p class="nombre_prod">Adidas Original Pumas</p>
-            <p class="des_prod">Remera hombre estampada</p>
-            <p class="precio">$110.000</p>
-        </div>
-          <div class="box_btn_comprar_producto">
-            <a class="btn_vertienda" id="btn_comprar_producto" href="/pages/detalle_pro.html">COMPRAR</a>
-        </div> 
-        
-        </div>
-       
-
-
-
-    
-        <div class="card_prod">
-            <a class="link_productos" href="">
-                <div class="box_img_prod">
-                        <img class="img_prod" src="/fotos de wsp/zapa_7.jpeg">
-                </div>
-             </a>
-        <div class="card_des">
-            <p class="ingreso">New Product</p>
-            <p class="nombre_prod">Adidas Original Pumas</p>
-            <p class="des_prod">Remera hombre estampada</p>
-            <p class="precio">$110.000</p>
-        </div>
-          <div class="box_btn_comprar_producto">
-            <a class="btn_vertienda" id="btn_comprar_producto" href="/pages/detalle_pro.html">COMPRAR</a>
-        </div> 
-           
-        </div>
-
-    
-
-
-
-
-      <div class="card_prod">
-                 <a class="link_productos" href="">  
-                    <div class="box_img_prod">
-                        <img class="img_prod" src="/fotos de wsp/zapa_3.jpeg">
-                </div>
-                </a>
-            <div class="card_des">
-                <p class="ingreso">New Ingreso</p>
-                <p class="nombre_prod">Adidas Original Pumas</p>
-                <p class="des_prod">Remera  hombre estampada</p>
-                <p class="precio">$110.000</p>
-            </div>
-              <div class="box_btn_comprar_producto">
-            <a class="btn_vertienda" id="btn_comprar_producto" href="/pages/detalle_pro.html">COMPRAR</a>
-        </div> 
-            
-            </div>
-        
-           
-
-
-
-    
-        <div class="card_prod">
-            <a class="link_productos" href="">
-                <div class="box_img_prod">
-                        <img class="img_prod" src="/fotos de wsp/zapa_3.jpeg">
-                </div>
-            </a>
-        <div class="card_des">
-            <p class="ingreso">En stock</p>
-            <p class="nombre_prod">Adidas Original Pumas</p>
-            <p class="des_prod">Remera hombre estampada</p>
-            <p class="precio">$110.000</p>
-        </div>
-
-         <div class="box_btn_comprar_producto">
-            <a class="btn_vertienda" id="btn_comprar_producto" href="/pages/detalle_pro.html">COMPRAR</a>
-        </div> 
-
-        </div>
-
-
-
-
-        <div class="card_prod">
-            <a class="link_productos" href="">
-                <div class="box_img_prod">
-                        <img class="img_prod" src="/fotos de wsp/zapa_3.jpeg">
-                </div>
-            </a>
-        <div class="card_des">
-            <p class="ingreso_stock">En Stock</p>
-            <p class="nombre_prod">Adidas Original Pumas</p>
-            <p class="des_prod">Remera hombre estampada</p>
-            <p class="precio">$110.000</p>
-        </div>
-          <div class="box_btn_comprar_producto">
-             <a class="btn_vertienda" id="btn_comprar_producto" href="/pages/detalle_pro.html">COMPRAR</a>
-        </div> 
-       
-        </div>
-   
-   
+        <div class="prod_cards"></div>
 
    </div>
 
@@ -501,7 +252,106 @@
 
 
 
-  <footer class="footer">
+<footer class="footer">
+
+<div class="box_redes">
+
+    <div class="box_titulos_redes" >
+       <h2 class="titulo_redes">CONTACTANOS</h2>
+       <p class="p_redes">Seguinos en nuestras redes para enterarte de todas las novedades</p>
+    </div>  
+    
+    
+
+    <div class="box_footer_redes">
+            
+            <div class="icon_contactos">
+                        <div class="box_red_1">
+                            <a class="a_circle" target="_blank" href="https://www.instagram.com/djblanco_canuelas/"><img src="/asset/icons/instagram.jpg" alt=""></a><h4 class="h2_logored">/ROSITAAMADA</h4>
+                        </div>
+
+                        <div class="box_red_1">
+                            <a class="a_circle" target="_blank" href="https://www.facebook.com/share/1BmtAGWzjz/"><img src="/asset/icons/facebook.jpg" alt=""></a><h4>/rositaamada</h4>
+                        </div>
+
+                        <div class="box_red_1">
+                            <a class="a_circle" target="_blank" href="https://wa.me/5492226688720"><img src="/asset/icons/wsp.jpg" alt=""></a><h4>1150853525</h4>
+                        </div>
+            </div>
+
+        </div>
+
+</div>
+
+
+
+
+
+  <div class="box_footer_marcas">
+
+
+ <ul class="box_marcas_li">
+        <li class="marcas_li">
+
+            <div class="box_h3_btn">
+                <h3>CATEGORIAS</h3>
+                <button class="btn_marcas">
+                    <img class="img_btn_marcas" src="/asset/icons/mas.png" alt="btn_marcas">
+                </button>
+            </div>
+
+            <div class="box_marcas">
+                <ul class="lista_marcas">
+                <li><a href="">Remeras</a></li>
+                <li><a href="">Pantalones</a></li>
+                <li><a href="">Zapatillas</a></li>
+                <li><a href="">buzos</a></li>
+                <li><a href="">camperas</a></li>
+                <li><a href="">Conjuntos</a></li>
+                <li><a href="/pages/productos.html">Ver tienda</a></li>
+                </ul>
+            </div>
+
+        </li>
+    </ul>
+</div>
+
+
+    <ul class="box_marcas_li">
+        <li class="marcas_li">
+
+            <div class="box_h3_btn">
+                <h3>BUSQUEDA POR MARCA</h3>
+                <button class="btn_marcas">
+                    <img class="img_btn_marcas" src="/asset/icons/mas.png" alt="btn_marcas">
+                </button>
+            </div>
+
+            <div class="box_marcas">
+                <ul class="lista_marcas">
+                    <li><a href="/pages/productos.html">Adidas</a></li>
+                    <li><a href="/pages/productos.html">Armania</a></li>
+                    <li><a href="/pages/productos.html">Calvin Klein</a></li>
+                    <li><a href="/pages/productos.html">Diesel</a></li>
+                    <li><a href="/pages/productos.html">Essential</a></li>
+                    <li><a href="/pages/productos.html">Guess</a></li>
+                    <li><a href="/pages/productos.html">M&M</a></li>
+                    <li><a href="/pages/productos.html">Jordan</a></li>
+                    <li><a href="/pages/productos.html">Mitchell and ness</a></li>
+                    <li><a href="/pages/productos.html">Lacoste</a></li>
+                    <li><a href="/pages/productos.html">Nike</a></li>
+                    <li><a href="/pages/productos.html">Polo</a></li>
+                    <li><a href="/pages/productos.html">Puma</a></li>
+                    <li><a href="/pages/productos.html">Sergio tacchini</a></li>
+                    <li><a href="/pages/productos.html">Tommy Hilfiger</a></li>
+                    <li><a href="/pages/productos.html">Zara</a></li>
+                </ul>
+            </div>
+
+        </li>
+    </ul>
+</div>
+
 
 <div class="box_footer_politicas">
     <h2>Politicas</h2>
@@ -511,7 +361,6 @@
      <div class="box_h3_btn">
         <h3>ENVIOS</h3>
         <button class="btn_mas"><img class="img_btn_mas" src="/asset/icons/mas.png" alt="btn_mas"></button>
-
         </div>
         <div class="box_politicas"><p>Envios a todo el pais en 5-7 dias habiles</p></div>
     </li>
@@ -543,7 +392,7 @@
     </li>
        <li class="politicas_li">
         <div class="box_h3_btn">
-        <h3>Promociones</h3>
+        <h3>PROMOCIONES</h3>
         <button class="btn_mas"><img class="img_btn_mas" src="/asset/icons/mas.png" alt="btn_mas"></button>
         </div>
        
@@ -553,60 +402,11 @@
     </ul>
 </div>
 
-
-       <h2>Nuestras Redes Sociales</h2>
-    <div class="box_footer_redes">
-        
-    <div class="icon_contactos">
-        <a class="a_circle" target="_blank" href="https://www.instagram.com/djblanco_canuelas/"><img src="/asset/icons/instagram.jpg" alt=""></a>
-        <a class="a_circle" target="_blank" href="https://www.facebook.com/share/1BmtAGWzjz/"><img src="/asset/icons/facebook.jpg" alt=""></a>
-        <a class="a_circle" target="_blank" href="https://wa.me/5492226688720"><img src="/asset/icons/wsp.jpg" alt=""></a>
-    </div>
-    </div>
-    <div class="box_footer_categorias">
-                <h2>Categorias</h2>
-            <ul class="lista_categorias_footer">
-                
-                <li><a href="">Remeras</a></li>
-                <li><a href="">Pantalones</a></li>
-                <li><a href="">Zapatillas</a></li>
-                <li><a href="">buzos</a></li>
-                <li><a href="">camperas</a></li>
-                <li><a href="">Conjuntos</a></li>
-                <li><a href="./pages/productos.html">Ver tienda</li>
-            </ul>
-    </div>
-
-
-    <div class="box_footer_marcas">
-            <h2>Indice/Marcas</h2>
-            <ul class="lista_marcas">
-                
-                <li><a href="/pages/productos.html">Adidas</a></li>
-                <li><a href="/pages/productos.html">Armania</a></li>
-                <li><a href="/pages/productos.html">Calvin Klein</a></li>
-                <li><a href="/pages/productos.html">Diesel</a></li>
-                <li><a href="/pages/productos.html">Essential</a></li>
-                <li><a href="/pages/productos.html">Guess</a></li>
-                <li><a href="/pages/productos.html">M&M</a></li>
-                <li><a href="/pages/productos.html">Jordan</a></li>
-                <li><a href="/pages/productos.html">Mitchell and ness</a></li>
-                <li><a href="/pages/productos.html">Lacoste </a></li>
-                <li><a href="/pages/productos.html">Nike</a></li>
-                <li><a href="/pages/productos.html">Polo</a></li>
-                <li><a href="/pages/productos.html">Puma </a></li>
-                <li><a href="/pages/productos.html">Sergio tacchini </a></li>
-                <li><a href="/pages/productos.html">Tommy Hilfiger</a></li>
-                <li><a href="/pages/productos.html">Zara</a></li>
-            </ul>
-    </div>
-
-
-
-
     <div class="box_footer_creditos">
         <h2>Creditos</h2>
-        <p>© 2026 MATTARCHIVE LTD</p>
+        <div class="box_politicas">
+        <p>© 2026 RositaAmada</p>
+    </div>
     </div>
 
 </footer>

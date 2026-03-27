@@ -221,3 +221,46 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+
+
+/*textos de card info*/
+
+const textos = [
+  "Aprovechá el envío gratis exclusivo para miembros!",
+  "10% OFF en tu primera compra",
+  "Pagá en cuotas sin interés",
+  "Ofertas todos los días 🔥"
+];
+
+let index = 0;
+
+const textoInfo = document.getElementById("textoInfo");
+const btnPrev = document.getElementById("btnPrev");
+const btnNext = document.getElementById("btnNext");
+
+// Mostrar texto inicial
+textoInfo.textContent = textos[index];
+
+// Función actualizar
+function actualizarTexto() {
+  textoInfo.textContent = textos[index];
+}
+
+// Botón siguiente
+btnNext.addEventListener("click", () => {
+  index = (index + 1) % textos.length;
+  actualizarTexto();
+});
+
+// Botón anterior
+btnPrev.addEventListener("click", () => {
+  index = (index - 1 + textos.length) % textos.length;
+  actualizarTexto();
+});
+
+// Cambio automático cada 5 segundos
+setInterval(() => {
+  index = (index + 1) % textos.length;
+  actualizarTexto();
+}, 5000);

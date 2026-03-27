@@ -1592,16 +1592,23 @@ background: linear-gradient(254deg,rgba(26, 171, 138, 1) 11%, rgba(0, 0, 0, 1) 2
 .box_footer_politicas{
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: fit-content;
 }
 
 
 .box_footer_politicas h2 {
+  padding-bottom:4px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   height: 45px;
- color: white;
- background-color: black;
- text-align: center;
-  font-weight: 600;
+  color: white;
+  background-color: black;
+  text-align: center;
+  font-weight: 700;
   font-size: 35px;
   letter-spacing: 5px;
 }

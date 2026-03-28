@@ -156,7 +156,7 @@ const productos = [
 document.addEventListener("DOMContentLoaded", () => {
 
   const contenedor = document.querySelector(".prod_cards");
-
+if(!contenedor) return; // 
   function renderProductos(lista) {
 
     contenedor.innerHTML = "";
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const card = document.createElement("div");
       card.classList.add("card_prod");
-
+      
       card.innerHTML = `
         <a class="link_productos" href="/pages/detalle_pro.html?id=${producto.id}">
           <div class="box_img_prod">
@@ -239,28 +239,66 @@ const textoInfo = document.getElementById("textoInfo");
 const btnPrev = document.getElementById("btnPrev");
 const btnNext = document.getElementById("btnNext");
 
-// Mostrar texto inicial
-textoInfo.textContent = textos[index];
+if (textoInfo && btnPrev && btnNext) {
 
-// Función actualizar
-function actualizarTexto() {
+  const textos = [
+    "Aprovechá el envío gratis exclusivo para miembros!",
+    "10% OFF en tu primera compra",
+    "Pagá en cuotas sin interés",
+    "Ofertas todos los días 🔥"
+  ];
+
+  let index = 0;
+
   textoInfo.textContent = textos[index];
+
+  function actualizarTexto() {
+    textoInfo.textContent = textos[index];
+  }
+
+  btnNext.addEventListener("click", () => {
+    index = (index + 1) % textos.length;
+    actualizarTexto();
+  });
+
+  btnPrev.addEventListener("click", () => {
+    index = (index - 1 + textos.length) % textos.length;
+    actualizarTexto();
+  });
+
+  setInterval(() => {
+    index = (index + 1) % textos.length;
+    actualizarTexto();
+  }, 5000);
+
 }
 
-// Botón siguiente
-btnNext.addEventListener("click", () => {
-  index = (index + 1) % textos.length;
-  actualizarTexto();
+
+
+
+/*tOOLSTIP DE BTN WSP*/ 
+
+const btnWsp = document.querySelector(".a_circle_wsp");
+
+// crear tooltip
+const tooltip = document.createElement("div");
+tooltip.classList.add("tooltip_wsp_js");
+tooltip.textContent = "Escribinos a nuestro WhatsApp 📩";
+
+document.body.appendChild(tooltip);
+
+// mostrar
+btnWsp.addEventListener("mouseenter", () => {
+  const rect = btnWsp.getBoundingClientRect();
+
+  tooltip.style.top = rect.top + rect.height / 2 + "px";
+  tooltip.style.left = rect.left - 10 + "px";
+  tooltip.style.transform = "translate(-100%, -50%)";
+
+  tooltip.style.opacity = "1";
 });
 
-// Botón anterior
-btnPrev.addEventListener("click", () => {
-  index = (index - 1 + textos.length) % textos.length;
-  actualizarTexto();
+// ocultar
+btnWsp.addEventListener("mouseleave", () => {
+  tooltip.style.opacity = "0";
 });
-
-// Cambio automático cada 5 segundos
-setInterval(() => {
-  index = (index + 1) % textos.length;
-  actualizarTexto();
-}, 5000);

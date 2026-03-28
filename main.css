@@ -1639,6 +1639,21 @@ background: linear-gradient(254deg,rgba(26, 171, 138, 1) 11%, rgba(0, 0, 0, 1) 2
 .box_btn_Wsp{
   position: relative;
 }
+.tooltip_wsp_js{
+  position: fixed;
+  background: black;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+
+  z-index: 99999;
+}
 
 
 

@@ -4,9 +4,114 @@ padding: 0%;
 box-sizing: border-box;
 
 }
-html{
-  margin-right: 0;
+
+* {
+  outline: 1px solid red;
 }
+html{
+ 
+}
+
+
+
+
+
+/*Seccion detalle*/
+
+.main_detalle{
+width:100%;
+height: 1000px;
+
+margin-top:87px
+}
+
+.nombre_producto{
+  color:black ;
+}
+
+
+.box_img_vistamini{
+  width: 70%;
+  padding: 5px;
+}
+
+.box_img_detalle1{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.img_detalle_main{
+  width: 95%;
+}
+
+
+.img_detalle{
+  width: 100%;
+}
+
+.img_vista_mini{
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.box_detalles{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content:center ;
+  align-items: center;
+}
+
+
+.box_detalle_de_producto{
+  width: 100%;
+  background-color: gray;
+  height: fit-content;
+
+}
+
+.descripcion_de_producto{
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  margin-top: 30px;
+}
+
+/*selector*/
+
+
+.talles {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn_talle {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn_talle:hover {
+  background: #000;
+  color: #fff;
+}
+
+.btn_talle.activo {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+
 .insta_container{
   margin-top: 50px;
   display: flex;
@@ -81,6 +186,7 @@ display: none;
   align-items: center;
   color: white;
   background-color: black;
+  height: 300PX;
 }
 
 .box_tollbar div select{
@@ -615,11 +721,10 @@ color: white;
 }
 
 .menu_2{
-  padding-left: 20px;
+ 
   display: none;
   width: 100%;
   justify-content: end;
-  margin-right: 0.8vh;
   height: fit-content;
   padding-right: 10px;
  
@@ -973,10 +1078,12 @@ background-color: #1AAB8A;
 }
 
 .breadcrumb{
-  width: 100%;
+  width: 80%;
   padding: 12px 16px 6px;
   font-size: 13px;
-  margin-left: 10px;
+  padding-left: 5px;
+  background-color: red;
+
 }
 
 /* LISTA */
@@ -1027,7 +1134,7 @@ background-color: #1AAB8A;
 
 
 .tool_bar{
-  margin-left: 10px;
+  
 
   width: 100%;
   
@@ -1107,7 +1214,7 @@ width: 100%;
   display: grid;
   grid-template-columns: 50px 1fr 50px;
   justify-content: center;
-  width: 100%;
+  width: 110%;
   background-color: #f0f0f0;
 }
 
@@ -1842,8 +1949,7 @@ transform: scale(1.3);
 
 
 .box_redes{
-
-  width: 90%;
+  width: 100%;
 }
 
 .box_medida_red{
@@ -1969,6 +2075,7 @@ padding:2px;
 .box_main_productos{ 
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width:100%;
   margin-bottom: 100px;
   
@@ -1979,10 +2086,11 @@ padding:2px;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2,180px);
+  column-gap: 10px;
   flex-wrap: wrap;
   justify-content:center ;
   align-items: center;
-  gap: 20px;
+ 
 }
 
 .card_prod{
@@ -1996,11 +2104,14 @@ padding:2px;
   width: 170px;
   align-items: center;
   border-radius: 20px;
-  margin-top: 20px;
+  margin-top: 25px;
   height: fit-content;
   border-bottom-right-radius: 20px;
   box-shadow: 2px 4px 4px -3px black;
   padding-bottom: 15px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 
 }
 
@@ -2205,6 +2316,12 @@ padding-right:25px;
 
 @media (min-width: 499px) and (max-width: 850px) {
    
+  /* ORDENAR*/
+
+  .ordenar{
+text-align: center;
+
+}
 
 
 
@@ -2371,8 +2488,8 @@ width: 42px;
 .prod_cards{
 
   padding:10px 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+ 
+
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2389,6 +2506,8 @@ width: 42px;
   animation-range: entry 15% cover 40%;
   width: 100%;
   height: auto;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .box_img_prod{
@@ -2439,11 +2558,25 @@ width: 42px;
 
 @media (min-width:800px) {
 
-  .nombre_prod{
-    margin-top: 20px;
-    font-size: 25px;
+
+
+
+  /* seccion de filtros */
+.ordenar{
+text-align: center;
+
+}
+.box_tollbar{
+  display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.nombre_prod{
+  margin-top: 20px;
+  font-size: 25px;
   
-  }
+}
 
   /*boton de wsp flotante*/
 

@@ -1,111 +1,77 @@
-
-
+/* =========================
+   🧭 MENU PRINCIPAL
+========================= */
 
 let Btn_menu = document.getElementById("btn_Menu");
 let menu = document.getElementById("menu");
+let btnCerrar = document.getElementById("btn_cerrar");
 
-Btn_menu.addEventListener("click",()=>{
+if (Btn_menu && menu) {
+  Btn_menu.addEventListener("click", () => {
+    menu.classList.toggle("activo");
+    document.body.classList.toggle("no-scroll");
+  });
+}
 
- controlar ()
-    
-
-
-
-} )
-
-function controlar() {
-  if (menu.classList.contains("active")) {
-    menu.classList.remove("active");
-  } else {
-    menu.classList.add("active");
-  }
+if (btnCerrar && menu) {
+  btnCerrar.addEventListener("click", () => {
+    menu.classList.remove("activo");
+    document.body.classList.remove("no-scroll");
+  });
 }
 
 
-console.log(Btn_menu + " este es el elemento capturado del dom" )
+/* =========================
+   📂 FOOTER POLITICAS
+========================= */
 
-
-
-
-
-let btnCerrar = document.getElementById("btn_cerrar");
-
-btnCerrar.addEventListener("click", () => {
-  menu.classList.remove("active");
-});
-
-
-Btn_menu.addEventListener("click", ()=>{
-
-    menu.classList.toggle("activo");
-
-    document.body.classList.toggle("no-scroll"); // ← agregás esta línea
-
-});
-
-
-/*Animaciones*/
-
-
-
-
-/*botonos desplegue */ 
-
-/*politicas footer*/ 
-
-const politicas = document.querySelectorAll(".politicas_li");
-
-politicas.forEach(item => {
-
+document.querySelectorAll(".politicas_li").forEach(item => {
   const boton = item.querySelector(".btn_mas");
 
-  boton.addEventListener("click", () => {
-
-    item.classList.toggle("activo");
-
-  });
-
+  if (boton) {
+    boton.addEventListener("click", () => {
+      item.classList.toggle("activo");
+    });
+  }
 });
 
 
-
+/* =========================
+   🏷️ FOOTER MARCAS
+========================= */
 
 document.querySelectorAll(".marcas_li").forEach(item => {
-
   const boton = item.querySelector(".btn_marcas");
 
-  boton.addEventListener("click", () => {
-
-    item.classList.toggle("activo");
-
-  });
-
+  if (boton) {
+    boton.addEventListener("click", () => {
+      item.classList.toggle("activo");
+    });
+  }
 });
 
+
+/* =========================
+   📋 LISTA MARCAS EXTRA
+========================= */
 
 const btnMarcas = document.querySelector(".btn_mas_lista");
 const listaMarcas = document.querySelector(".box_list_marcas");
 const icono = document.querySelector(".img_btn_mas");
 
-btnMarcas.addEventListener("click", function(){
+if (btnMarcas && listaMarcas) {
+  btnMarcas.addEventListener("click", () => {
 
-    if(listaMarcas.style.display === "block"){
-        listaMarcas.style.display = "none";
-        icono.style.transform = "rotate(0deg)";
-    } else {
-        listaMarcas.style.display = "block";
-        icono.style.transform = "rotate(45deg)";
+    const abierto = listaMarcas.style.display === "block";
+
+    listaMarcas.style.display = abierto ? "none" : "block";
+
+    if (icono) {
+      icono.style.transform = abierto ? "rotate(0deg)" : "rotate(45deg)";
     }
 
-});
-
-
-
-
-
-
-
-
+  });
+}
 
 
 
@@ -693,3 +659,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 50)
 
 });
+

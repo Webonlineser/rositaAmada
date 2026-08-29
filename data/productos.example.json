@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nombre": "Remera Adidas Originals",
+    "descripcion": "Remera de algodon estampada",
+    "precio": 45000,
+    "marca": "ADIDAS",
+    "categoria": "Remeras",
+    "imagenes": ["/fotos de wsp/zapa_1.jpeg"],
+    "variantes": [
+      { "color": "black", "talle": "S", "stock": 2 },
+      { "color": "white", "talle": "M", "stock": 2 }
+    ],
+    "activo": true
+  }
+]

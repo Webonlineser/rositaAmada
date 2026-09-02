@@ -1,0 +1,19 @@
+{
+  "codigo": "PUMA-001",
+  "nombre": "Remera Puma Essential",
+  "marca": "PUMA",
+  "categoria": "Remeras",
+  "descripcion": "Remera urbana lisa, ideal para uso diario.",
+  "precio": 40000,
+  "stock": 20,
+  "colores": ["Negro", "Blanco", "Verde"],
+  "talles": ["S", "M", "L"],
+  "descuento": 15,
+  "nuevo": true,
+  "new_arrivals": true,
+  "imagenes": [
+    "https://images.example.com/puma-001-1.jpg",
+    "https://images.example.com/puma-001-2.jpg",
+    "https://images.example.com/puma-001-3.jpg"
+  ]
+}

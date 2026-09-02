@@ -1,28 +1,61 @@
 # RositaAmada
 
-Tienda online de indumentaria y streetwear. La interfaz funciona como catalogo estatico con carrito persistido en `localStorage`.
+Proyecto de e-commerce de indumentaria y streetwear. La web ya tiene una base funcional de catalogo, carrito y estructura visual, pero aun falta cerrar la parte de administracion, datos reales y pagos.
 
-## Errores importantes detectados
+## Estado actual de la web
 
-1. **No existe integracion real con Mercado Pago.** Un checkout seguro requiere backend o Cloud Function para crear preferencias y recibir webhooks; las credenciales privadas no pueden estar en `main.js`.
-2. **El catalogo esta hardcodeado.** Los productos viven dentro de `main.js`, por eso una hoja de Excel no puede actualizar la tienda sin editar codigo.
-3. **El stock no tenia una fuente consistente.** Algunos productos declaraban stock global y otros variantes incompletas; eso podia permitir cantidades incorrectas en el carrito.
-4. **Habia contenido de prueba visible.** La portada mostraba Lorem ipsum, nombres repetidos y CTA sin destino.
-5. **Habia enlaces vacios y rutas absolutas mezcladas.** Esto provoca recargas, errores al publicar en una subcarpeta y navegacion inconsistente.
-6. **No hay validacion de datos ni panel de administracion.** Antes de Firebase conviene validar el JSON y definir el modelo de variantes.
+### Lo que ya esta hecho
+- Home principal con hero, barra informativa, promos y secciones visuales.
+- Catalogo de productos y detalle de producto.
+- Carrito funcional con persistencia local.
+- Logica de stock y descuento.
+- Panel de administracion para importar productos desde Excel/CSV.
+- Estructura base para datos en Firebase/Firestore.
+- Archivos de ejemplo para `siteConfig/home` y `productos/{codigo}`.
+- Configuracion inicial de Firebase preparada para uso futuro.
 
-## Estado actual
+### Lo que aun falta para terminar la web
+- Conectar la web con Firestore para leer productos y contenido global.
+- Dejar de depender de `localStorage` para datos principales.
+- Definir el flujo final de carga de productos desde Excel a base de datos.
+- Reemplazar datos de prueba por datos reales del cliente.
+- Implementar la logica completa del checkout y envio.
+- Integrar Mercado Pago real con backend seguro.
+- Resolver la parte de imagenes y almacenamiento de archivos.
+- Definir permisos, auth y acceso privado del panel administrativo.
+- Revisar estilo final, responsive y QA de todas las paginas.
+- Hacer prueba final con flujo completo: cargar producto, ver web, agregar al carrito, pagar, enviar.
 
-- Portada responsive con identidad visual editorial y llamados a la accion funcionales.
-- Catalogo y carrito existentes conservados.
-- Precios con formato `es-AR`.
-- Calculo de stock centralizado para variantes y productos simples.
-- Estructura de datos propuesta en `data/productos.example.json`.
+## Estimacion realista de avance
 
-## Proximo orden recomendado
+Considerando todo lo que falta para dejar la web terminada y lista para uso con datos reales, el avance actual se estima asi:
 
-1. Migrar el arreglo de `main.js` a `data/productos.json`.
-2. Agregar un conversor CSV a JSON con validaciones.
-3. Probar carrito, stock y rutas en un servidor local.
-4. Conectar Firebase Authentication/Firestore para administrar productos.
-5. Implementar Mercado Pago desde una funcion server-side y probar estados de pago.
+- Frontend publico: 85%
+- Catalogo/productos y estructura: 75%
+- Panel administrativo: 70%
+- Firestore / datos reales: 45%
+- Checkout / pagos: 0%
+- Imagenes / almacenamiento: 10%
+- QA final y pulido de produccion: 35%
+
+### Resultado estimado
+- Proyecto completado: 62%
+- Restante para terminar: 38%
+
+## Orden recomendado para seguir manana
+
+1. Conectar el panel administrativo con Firestore.
+2. Cargar productos reales desde Excel y validar estructura.
+3. Hacer que la web lea desde Firestore en vez de localStorage.
+4. Arreglar el flujo final de envio y checkout.
+5. Preparar Mercado Pago real y pruebas de pago.
+6. Dejar el panel privado, con control de contenido y carga de datos.
+7. Revisar responsive final y pulido visual.
+8. Hacer una prueba end-to-end completa antes de lanzar.
+
+## Nota
+
+El estado actual es funcional como base de proyecto, pero aun no es una web de produccion terminada. La mayor parte del trabajo restante no es visual sino de estructura de datos, integracion y flujo de negocio.
+
+Seguimos manana con el mismo enfoque: dejar el proyecto listo por etapas y priorizando lo que realmente falta para que el cliente pueda operar la web sin editar codigo.
+

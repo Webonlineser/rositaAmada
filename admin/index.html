@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel privado · RositaAmada</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  </head>
+  <body class="admin-body">
+    <div class="admin-shell">
+      <aside class="admin-sidebar">
+        <div class="admin-brand">
+          <span class="admin-brand__label">PRIVATE</span>
+          <h1>RositaAmada</h1>
+          <small>Panel de productos</small>
+        </div>
+
+        <nav class="admin-nav">
+          <a class="active" href="#importar">Importar</a>
+          <a href="#preview">Vista previa</a>
+          <a href="#json">JSON exportado</a>
+        </nav>
+      </aside>
+
+      <main class="admin-main">
+        <section class="admin-card" id="importar">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Carga de datos</p>
+              <h2>Importar archivo Excel</h2>
+            </div>
+          </div>
+
+          <div class="upload-box">
+            <label class="upload-label" for="excelFile">
+              <input id="excelFile" type="file" accept=".csv, .xlsx, .xls" />
+              <span>Elegí un archivo Excel o CSV</span>
+            </label>
+          </div>
+
+          <div class="admin-grid-two">
+            <label class="field">
+              <span>Título promocional</span>
+              <input id="promoTitleInput" type="text" placeholder="Ej: Novedades del mes" />
+            </label>
+
+            <label class="field">
+              <span>Imagen promocional</span>
+              <input id="promoImageInput" type="url" placeholder="https://.../banner.jpg" />
+            </label>
+          </div>
+
+          <div class="controls-row">
+            <button id="btnPreview" class="btn btn-primary" type="button">Procesar archivo</button>
+            <button id="btnSaveLocal" class="btn btn-secondary" type="button">Guardar en localStorage</button>
+            <button id="btnDownloadJson" class="btn btn-dark" type="button">Descargar JSON</button>
+          </div>
+
+          <div class="status-box">
+            <p id="statusText">Sin archivo cargado todavía.</p>
+          </div>
+        </section>
+
+        <section class="admin-card" id="site-content">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Contenido web</p>
+              <h2>Modificar home y promos</h2>
+            </div>
+          </div>
+
+          <div class="admin-grid-two">
+            <label class="field">
+              <span>Imagen principal del home</span>
+              <input id="homeBannerImageInput" type="url" placeholder="https://.../banner-home.jpg" />
+            </label>
+
+            <label class="field">
+              <span>Eyebrow del home</span>
+              <input id="homeEyebrowInput" type="text" placeholder="ROSITAAMADA · CURATED STREETWEAR" />
+            </label>
+
+            <label class="field">
+              <span>Título principal del home</span>
+              <input id="homeTitleInput" type="text" placeholder="Vestite con intención." />
+            </label>
+
+            <label class="field">
+              <span>Texto de la home</span>
+              <input id="homeTextInput" type="text" placeholder="Marcas internacionales, básicos premium..." />
+            </label>
+
+            <label class="field">
+              <span>Texto del botón</span>
+              <input id="homeCtaInput" type="text" placeholder="EXPLORAR COLECCIÓN" />
+            </label>
+
+            <label class="field">
+              <span>Texto de la barra superior</span>
+              <input id="infoBarTextInput" type="text" placeholder="Envíos a todo el país · cuotas sin interés" />
+            </label>
+          </div>
+
+          <div class="field" style="margin-top: 16px;">
+            <span>Mensajes rotativos (separados por | )</span>
+            <textarea id="rotatingTextsInput" rows="4" placeholder="Aprovechá el envío gratis | 10% OFF ..."></textarea>
+          </div>
+
+          <div class="controls-row">
+            <button id="btnSaveSiteConfig" class="btn btn-primary" type="button">Guardar contenido web</button>
+          </div>
+        </section>
+
+        <section class="admin-card" id="preview">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Resultado</p>
+              <h2>Vista previa</h2>
+            </div>
+            <span id="summaryBadge" class="badge">0 productos</span>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Marca</th>
+                  <th>Precio</th>
+                  <th>Colores</th>
+                  <th>Talles</th>
+                  <th>Stock</th>
+                  <th>% desc.</th>
+                  <th>Nuevo</th>
+                </tr>
+              </thead>
+              <tbody id="previewTableBody">
+                <tr class="empty-row">
+                  <td colspan="9">Todavía no hay productos cargados.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="admin-card" id="json">
+          <div class="card-header">
+            <div>
+              <p class="eyebrow">Salida</p>
+              <h2>JSON generado</h2>
+            </div>
+          </div>
+
+          <textarea id="jsonOutput" readonly placeholder="El JSON final aparecerá aquí..."></textarea>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

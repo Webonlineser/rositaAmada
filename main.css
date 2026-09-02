@@ -382,19 +382,82 @@ border-radius:16px;
 .body_produc .box_button_filtrar { margin: 0; padding: 22px 0 8px; background: var(--ra-paper); }
 .body_produc .btn_filtrar { min-width: 160px; height: 42px; border: 0; background: var(--ra-ink); color: white; font-size: 11px; letter-spacing: .16em; }
 .body_produc .box_main_productos { max-width: 1240px; margin: 0 auto; padding: 22px 28px 100px; }
-.body_produc .prod_cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px 16px; width: 100%; padding: 0; }
-.body_produc .card_prod { width: 100%; align-items: stretch; background: white; }
-.body_produc .box_img_prod { width: 100%; aspect-ratio: 4 / 5; background: #e9e8e3; overflow: hidden; }
-.body_produc .img_prod { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.body_produc .prod_cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px 18px; width: 100%; padding: 0; }
+.body_produc .card_prod { width: 100%; align-items: stretch; background: #f9f8f5; border: 1px solid rgba(17,17,17,.08); box-shadow: 0 18px 28px rgba(17,17,17,.05); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.body_produc .card_prod:hover { transform: translateY(-5px); box-shadow: 0 26px 44px rgba(17,17,17,.11); border-color: rgba(17,17,17,.18); }
+.body_produc .box_img_prod { width: 100%; aspect-ratio: 4 / 5; background: #efefe8; overflow: hidden; }
+.body_produc .img_prod { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
 .body_produc .card_prod:hover .img_prod { transform: scale(1.04); }
-.body_produc .card_des { padding: 15px; }
-.body_produc .card_des .nombre_prod { min-height: 38px; color: var(--ra-ink); font-size: 15px; font-weight: 700; }
+.body_produc .card_des { padding: 15px 15px 18px; }
+.body_produc .card_des .nombre_prod { min-height: 38px; color: var(--ra-ink); font-size: 15px; font-weight: 700; letter-spacing: -.02em; }
 .body_produc .card_des .des_prod { min-height: 20px; color: var(--ra-muted); font-size: 11px; }
 .body_produc .card_des .precio { margin: 12px 0; color: var(--ra-ink); font-size: 16px; font-weight: 700; }
-.body_produc .btn_vertienda { width: 100%; height: 38px; font-size: 10px; }
+.body_produc .btn_vertienda { width: 100%; height: 38px; font-size: 10px; border: 1px solid #111; background: #111; color: white; transition: all .2s ease; }
+.body_produc .btn_vertienda:hover { background: white; color: #111; }
+.body_produc .product_ad_banner {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid rgba(17,17,17,.08);
+  background: linear-gradient(135deg, #000000 0%, #111111 20%, #202020 42%, #e7e7e7 72%, #ffffff 100%);
+  box-shadow: 0 18px 32px rgba(17,17,17,.12);
+  position: relative;
+}
+.body_produc .product_ad_banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,.20), rgba(255,255,255,0) 52%, rgba(0,0,0,.18));
+  pointer-events: none;
+}
+.body_produc .product_ad_banner__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 340px;
+  padding: 18px 18px 20px;
+  color: #111;
+  background: rgba(255,255,255,.02);
+}
+.body_produc .product_ad_banner__content span {
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: rgba(17,17,17,.75);
+}
+.body_produc .product_ad_banner__content h3 {
+  margin: 0;
+  font-size: clamp(26px, 2.1vw, 52px);
+  line-height: .9;
+  color: #111111;
+  letter-spacing: -.02em;
+}
+.body_produc .product_ad_banner__content p {
+  margin: 0;
+  max-width: 410px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(17,17,17,.75);
+}
+.body_produc .product_ad_banner__content a {
+  width: fit-content;
+  margin-top: 8px;
+  padding: 11px 16px;
+  background: #111111;
+  color: #f2f2f0;
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
 
 .body_produc .main_detalle { width: min(1180px, calc(100% - 56px)); margin: 125px auto 80px; padding: 34px; background: white; border-radius: 0; align-items: stretch; }
-.body_produc .box_detalles { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(340px, .9fr); gap: 42px; align-items: start; }
+.body_produc .box_detalles { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr); gap: 30px; align-items: start; }
 .body_produc .box_visual { min-width: 0; }
 .body_produc .nombre_producto { margin: 0 0 18px; text-align: left; font-family: "Bebas Neue", sans-serif; font-size: 38px; }
 .body_produc .box_img_detalle1 { width: 100%; aspect-ratio: 4 / 5; background: #e9e8e3; }
@@ -835,6 +898,10 @@ a{
 
 .a_op2_Carrito{
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 
@@ -987,10 +1054,11 @@ width: 100%;
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  gap: 6px;
+  gap: 18px;
   width: 100%;
+  padding: 10px 4px 18px;
   scrollbar-width: none;
-
+  align-items: stretch;
 }
 
 
@@ -1005,13 +1073,15 @@ width: 100%;
 }
 
 .box_Producto_new{
-  width: 100%;
   display: flex;
   flex-direction: column;
-  flex: 0 0 auto;
-  width: fit-content;
+  flex: 0 0 290px;
+  width: 290px;
+  background: #f5f5f3;
   scroll-snap-align: start;
   margin-bottom: 20px;
+  border: 1px solid #e7e7e7;
+  overflow: hidden;
 }
 
 
@@ -1026,11 +1096,13 @@ width: 100%;
 .btn_comprar{
 border-radius: 10px;
 margin-bottom: 5px;
-width: 85px;
-height: 20px;
-font-size: 10px;
+width: 100%;
+height: 42px;
+font-size: 12px;
 background-color: black;
 color: white;
+font-weight: 700;
+letter-spacing: 0.12em;
 }
 
 
@@ -1040,32 +1112,39 @@ color: white;
 }
 
 .box_img_new{
-
-  height:fit-content;
-  width: 180px;
-  height: 100%;
-
-  overflow:hidden;
+  width: 100%;
+  aspect-ratio: 1 / 0.95;
+  overflow: hidden;
+  background: #f0f0f0;
 }
 
 
 .descripcion_new{
-  text-align: center;
-  box-shadow: 2px 4px 4px -3px black;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  text-align: left;
+  padding: 18px 18px 16px;
+  background: #f7f7f5;
+  min-height: 230px;
+  box-shadow: none;
 }
+
 .descripcion_new p{
-  height: 10px;
+  margin: 0;
+  line-height: 1.3;
 }
 
 .box_img_new img{
-
   width: 100%;
- 
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .descripcion_new{
- margin-top: 3px;
+ margin-top: 0;
 
 }
 
@@ -1081,7 +1160,32 @@ color: white;
 }
 
 .descripcion_new p{
-  text-align: center;
+  text-align: left;
+}
+
+.descripcion_new .ingreso {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #6a6a6a;
+}
+
+.descripcion_new .nombre_prod {
+  font-size: clamp(1.2rem, 1.8vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #171717;
+}
+
+.descripcion_new .des_prod {
+  font-size: 0.95rem;
+  color: #4d4d4d;
+}
+
+.descripcion_new .precio {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111111;
 }
 
 /*Section New Arrivals*/
@@ -1202,60 +1306,69 @@ color: white;
 /* CARRITO DE MODO MOBILE */
 .box_carrito_sider{
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  height: 23px;
+  height: 52px;
+  gap: 10px;
 }
 
 
 
 .p_carrito{  
-display: flex;
-flex-direction: column;
-height:fit-content;
-display: end;
-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: black;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
 
 
 
 .box_img_sider{
-  width: 50px;
-  height: fit-content;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .img_carrito_sider{
-  width: 80%;
-  height: 100%;
-  margin-bottom: 8px;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  display: block;
 }
 
 
 
 .box_contador_sider{
-  background-color: yellow;
+  background-color: #1AAB8A;
   height: 20px;
   width: 20px;
   border-radius: 50px;
-  background-color: #1AAB8A;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  position: relative;
-  top:-2px;
-  right:6px;
-  
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 
 
 .contador_Sider{
-  position: absolute;
-  top: -3px;
-  right: 10px;
-  height:10px;
+  position: static;
+  height: auto;
   color: white;
   text-align: center;
+  margin: 0;
+  line-height: 1;
+  font-size: 10px;
 }
 
 
@@ -1503,16 +1616,16 @@ Barra de filtrado y busqueda de productos
 
 .banner_prod{
 width: 100%;
-height: 300px;
+height: 420px;
 display: flex;
 align-items: flex-end;
 padding: 34px 7vw;
 color: white;
 background: linear-gradient(90deg, rgba(16,16,16,.85), rgba(16,16,16,.08)), url("../asset/Fotos/banners/banner_remeras.png") center/cover;
-
+box-shadow: inset 0 -120px 120px rgba(0,0,0,.18);
 }
 .banner_prod_content p { margin: 0 0 10px; color: var(--ra-accent); font-size: 11px; letter-spacing: .18em; }
-.banner_prod_content h1 { margin: 0; text-align: left; font-family: "Bebas Neue", sans-serif; font-size: 62px; line-height: .9; }
+.banner_prod_content h1 { margin: 0; text-align: left; font-family: "Bebas Neue", sans-serif; font-size: clamp(56px, 5vw, 96px); line-height: .86; }
 .banner_prod_content span { display: block; margin-top: 16px; color: rgba(255,255,255,.8); font-size: 13px; }
 
 }
@@ -1622,17 +1735,19 @@ Barra de filtrado y busqueda de productos
 
 body{
   width: 100%;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Inter", "Roboto", sans-serif;
   font-style: normal;
   overflow-x: hidden;
   position: relative;
-  overflow-x: hidden;
-
 }
 
 .body_produc{
 width: 100%;
+}
 
+h1, h2, h3, h4, .titulo_arrivasl h2, .producto_nombre_detail, .nombre_producto, .banner_prod_content h1, .footer_wordmark, .h1_home {
+  font-family: "Bebas Neue", "Saira", sans-serif;
+  letter-spacing: .02em;
 }
 
 
@@ -1664,11 +1779,28 @@ width: 100%;
 
 
 .box_btn_interfaz{
- border: none;
-height: 100px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: opacity 0.2s ease;
 }
 
+.box_btn_interfaz:hover {
+  opacity: 0.8;
+}
 
+.box_btn_interfaz img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
+}
 
 
 
@@ -1690,6 +1822,7 @@ height: 100px;
   font-weight: bold;
   letter-spacing: 2px;
   width: 260px;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1792,25 +1925,24 @@ height: 100px;
 
 /*medidas de logos de carrusel*/
 .marca img.logo_calvin{
-  height: 250px;
+  height: 300px;
 }
 
 .marca img.logo_armani{
-  height: 250px;
+  height: 300px;
 }
 
 .marca img.logo_miche{
-height: 250px;
-
+  height: 300px;
 }
 
 .marca img.logo_esse{
-  height:50px;
+  height: 60px;
 }
 
 
 .marca img{
-  height: 60px;
+  height: 90px;
   width: auto;
   object-fit: contain;
   filter: grayscale(100%);
@@ -2255,21 +2387,26 @@ align-items: center;
   position: fixed;
   top: 609px;
   right: 37px;
-  width: 55px;        
+  width: 55px;
   height: 55px;
   border-radius: 50%;
-  overflow: hidden;  
-  display: inline-block; 
-  border:1px solid #1AAB8A;
-  box-shadow: 0 4px 10px black;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4d000;
+  border: 3px solid #f9e66b;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22), 0 0 0 6px rgba(244, 208, 0, 0.12);
+  z-index: 9999;
 }
 
-
 .a_circle_wsp img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;    
-  display: block;   
+  width: 92%;
+  height: 92%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  background: white;
 }
 
 .a_circle_wsp:hover{
@@ -2673,7 +2810,7 @@ font-weight: bold;
   height: fit-content;
   display: flex;
   flex-direction: row;
-  background-color: #1AAB8A;
+  background-color: #ffffff;
 }
 
 .box_detalles{
@@ -2698,7 +2835,7 @@ font-weight: bold;
 }
 
 .box_detalle_escritorio{
-  background-color: blue;
+  background-color: transparent;
   height: 100%;
   
 }
@@ -4043,11 +4180,120 @@ width: 100%;
 .footer_column a:hover { color: var(--ra-accent); }
 .footer_bottom { grid-column: 1 / -1; display: flex; justify-content: space-between; padding-top: 24px; margin-top: 18px; border-top: 1px solid #3b3b39; color: #888883; font-size: 11px; }
 
+.about_section,
+.contact_section {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px 80px;
+}
+
+.about_section {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 36px;
+  align-items: center;
+  padding-top: 24px;
+}
+
+.about_content {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about_content h2,
+.contact_text h2 {
+  margin: 0;
+  color: var(--ra-ink);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(2.75rem, 5vw, 5rem);
+  line-height: .9;
+  letter-spacing: .02em;
+}
+
+.about_content p:last-child {
+  max-width: 620px;
+  color: #4a4a47;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.about_stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat_item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 18px;
+  background: var(--ra-paper);
+  border: 1px solid var(--ra-line);
+  min-height: 126px;
+}
+
+.stat_item strong {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--ra-ink);
+}
+
+.stat_item span {
+  color: #585853;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.contact_section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 22px;
+  padding-top: 14px;
+  padding-bottom: 90px;
+  border-top: 1px solid var(--ra-line);
+}
+
+.contact_actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.contact_actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 20px;
+  border: 1px solid var(--ra-ink);
+  background: var(--ra-ink);
+  color: white;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.contact_actions a:hover {
+  transform: translateY(-2px);
+  background: #2a2a2a;
+}
+
 @media (max-width: 760px) {
   .footer_modern { grid-template-columns: repeat(2, 1fr); gap: 38px 22px; padding: 54px 24px 22px; }
   .footer_brand { grid-column: 1 / -1; }
   .footer_wordmark { font-size: 34px; }
   .footer_bottom { flex-direction: column; gap: 8px; }
+  .about_section { grid-template-columns: 1fr; padding: 0 18px 54px; }
+  .about_stats { grid-template-columns: 1fr; }
+  .contact_section { flex-direction: column; align-items: flex-start; padding: 0 18px 70px; }
+  .contact_actions { justify-content: flex-start; }
 }
 
 /* Categorias destacadas */
@@ -4247,7 +4493,15 @@ header.box_header { height: 0 !important; }
 .body_produc .box_visual { position: relative; }
 .body_produc .producto_marca { margin: 0 0 10px; color: var(--ra-muted); font-size: 10px; font-weight: 700; letter-spacing: .18em; }
 .body_produc .box_visual > .producto_marca { display: none; }
-.body_produc .nombre_producto { margin-bottom: 20px; font-size: 44px; letter-spacing: .02em; }
+.body_produc .nombre_producto {
+  margin: 0 0 20px;
+  color: var(--ra-ink);
+  font-family: "Bebas Neue", "Saira", sans-serif;
+  font-size: clamp(2.8rem, 4vw, 5.2rem);
+  line-height: 0.9;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
 .body_produc .box_img_detalle1 { aspect-ratio: 1 / 1.12; }
 .body_produc .img_vista_mini { gap: 12px; }
 .body_produc .box_img_vistamini { width: 88px; height: 104px; border: 1px solid var(--ra-line); }
@@ -4355,8 +4609,24 @@ header.box_header { height: 0 !important; }
   .section_novedades .titulo_arrivasl h2 { font-size: 45px; text-align: left; }
   .section_novedades .titulo_arrivasl p { margin-top: 12px; text-align: left; }
   .section_novedades .box_productos_new { gap: 12px; padding: 24px 18px 10px; }
-  .section_novedades .box_Producto_new { width: 205px; flex-basis: 205px; }
-  .section_novedades .box_img_new { height: 255px; }
+  .section_novedades .box_Producto_new {
+    width: 220px;
+    flex-basis: 220px;
+    min-width: 220px;
+    max-width: 220px;
+  }
+  .section_novedades .box_img_new { height: 265px; }
+  .section_novedades .descripcion_new {
+    min-height: 190px;
+    padding: 15px 14px 16px;
+  }
+  .section_novedades .descripcion_new .nombre_prod {
+    font-size: 16px;
+  }
+  .section_novedades .descripcion_new .btn_comprar {
+    height: 36px;
+    margin-top: 12px;
+  }
 }
 
 /* Correccion de escala para logos dominantes */
@@ -4396,31 +4666,35 @@ header.box_header { height: 0 !important; }
 
 /* Carrusel de marcas: slots iguales y escala optica */
 .marcas { width: 100%; padding: 22px 0; background: white; overflow: hidden; }
-.marcas_viewport { width: 100%; height: 78px; overflow: hidden; }
-.marcas_track { display: flex; align-items: center; gap: 18px; height: 78px; padding: 8px 18px; animation: scrollMarcas 46s linear infinite; }
-.marcas_track .marca { display: flex; flex: 0 0 142px; width: 142px; height: 62px; align-items: center; justify-content: center; }
+.marcas_viewport { width: 100%; height: 102px; overflow: hidden; }
+.marcas_track { display: flex; align-items: center; gap: 30px; height: 102px; padding: 12px 26px; animation: scrollMarcas 46s linear infinite; }
+.marcas_track .marca { display: flex; flex: 0 0 188px; width: 188px; height: 78px; align-items: center; justify-content: center; }
 .marcas_track .marca img,
 .marcas_track .marca img.logo_calvin,
 .marcas_track .marca img.logo_armani,
 .marcas_track .marca img.logo_miche,
-.marcas_track .marca img.logo_esse { display: block; width: 126px !important; height: 48px !important; max-width: 126px; max-height: 48px; object-fit: contain; filter: grayscale(1); opacity: .72; transition: filter .25s ease, opacity .25s ease, transform .25s ease; }
-.marcas_track .marca img.logo_armani { transform: scale(1.18); }
-.marcas_track .marca img.logo_esse { transform: scale(1.12); }
-.marcas_track .marca img:hover { filter: grayscale(0); opacity: 1; transform: scale(1.08); }
-.marcas_track .marca img.logo_armani:hover { transform: scale(1.28); }
-.marcas_track .marca img.logo_esse:hover { transform: scale(1.22); }
+.marcas_track .marca img.logo_esse { display: block; width: 176px !important; height: 68px !important; max-width: 176px; max-height: 68px; object-fit: contain; filter: grayscale(1); opacity: .72; transition: filter .25s ease, opacity .25s ease, transform .25s ease; }
+.marcas_track .marca img.logo_armani { transform: scale(1.42); }
+.marcas_track .marca img.logo_esse { transform: scale(1.08); }
+.marcas_track .marca img.logo_miche { transform: scale(1.34); }
+.marcas_track .marca img.logo_calvin { transform: scale(1.58); }
+.marcas_track .marca img:hover { filter: grayscale(0); opacity: 1; transform: scale(1.12); }
+.marcas_track .marca img.logo_armani:hover { transform: scale(1.54); }
+.marcas_track .marca img.logo_esse:hover { transform: scale(1.18); }
+.marcas_track .marca img.logo_miche:hover { transform: scale(1.46); }
+.marcas_track .marca img.logo_calvin:hover { transform: scale(1.68); }
 .marcas_track .marca:nth-child(1) img,
-.marcas_track .marca:nth-child(16) img { transform: scale(1.22); }
+.marcas_track .marca:nth-child(16) img { transform: scale(1.54); }
 .marcas_track .marca:nth-child(2) img,
-.marcas_track .marca:nth-child(17) img { transform: scale(1.38); }
+.marcas_track .marca:nth-child(17) img { transform: scale(1.72); }
 .marcas_track .marca:nth-child(4) img,
 .marcas_track .marca:nth-child(19) img,
 .marcas_track .marca:nth-child(6) img,
-.marcas_track .marca:nth-child(21) img { transform: scale(1.25); }
+.marcas_track .marca:nth-child(21) img { transform: scale(1.46); }
 .marcas_track .marca:nth-child(1) img:hover,
-.marcas_track .marca:nth-child(16) img:hover { transform: scale(1.32); }
+.marcas_track .marca:nth-child(16) img:hover { transform: scale(1.68); }
 .marcas_track .marca:nth-child(2) img:hover,
-.marcas_track .marca:nth-child(17) img:hover { transform: scale(1.48); }
+.marcas_track .marca:nth-child(17) img:hover { transform: scale(1.88); }
 
 @media (max-width: 760px) {
   .marcas { padding: 16px 0; }
@@ -4439,7 +4713,7 @@ header.box_header { height: 0 !important; }
 }
 
 /* Escala final: los logos secundarios ganan presencia */
-.marcas_track .marca img { transform: scale(1.58); }
+.marcas_track .marca img { transform: scale(1.9); }
 .marcas_track .marca:nth-child(3) img,
 .marcas_track .marca:nth-child(4) img,
 .marcas_track .marca:nth-child(5) img,
@@ -4449,8 +4723,8 @@ header.box_header { height: 0 !important; }
 .marcas_track .marca:nth-child(19) img,
 .marcas_track .marca:nth-child(20) img,
 .marcas_track .marca:nth-child(21) img,
-.marcas_track .marca:nth-child(22) img { transform: scale(1); }
-.marcas_track .marca img:hover { transform: scale(1.5); }
+.marcas_track .marca:nth-child(22) img { transform: scale(1.3); }
+.marcas_track .marca img:hover { transform: scale(2.06); }
 .marcas_track .marca:nth-child(3) img:hover,
 .marcas_track .marca:nth-child(4) img:hover,
 .marcas_track .marca:nth-child(5) img:hover,
@@ -4460,7 +4734,33 @@ header.box_header { height: 0 !important; }
 .marcas_track .marca:nth-child(19) img:hover,
 .marcas_track .marca:nth-child(20) img:hover,
 .marcas_track .marca:nth-child(21) img:hover,
-.marcas_track .marca:nth-child(22) img:hover { transform: scale(1.08); }
+.marcas_track .marca:nth-child(22) img:hover { transform: scale(1.42); }
+
+.marcas_track .marca img.logo_calvin {
+  width: 240px !important;
+  height: 92px !important;
+  transform: scale(2.1) !important;
+}
+
+.marcas_track .marca img.logo_miche {
+  width: 220px !important;
+  height: 86px !important;
+  transform: scale(1.95) !important;
+}
+
+.marcas_track .marca img.logo_armani {
+  width: 220px !important;
+  height: 86px !important;
+  transform: scale(1.88) !important;
+}
+
+.marcas_track .marca img.logo_esse {
+  transform: scale(1.08) !important;
+}
+
+.marcas_track .marca {
+  margin-right: 18px;
+}
 
 @media (max-width: 760px) {
   .marcas_track .marca img { transform: scale(1.42); }

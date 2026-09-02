@@ -303,14 +303,60 @@ function configurarBusqueda() {
    🧱 RENDER PRODUCTOS
 ========================= */
 
+function renderNewArrivals() {
+  const contenedores = document.querySelectorAll(".box_productos_new");
+  if (!contenedores.length || !Array.isArray(productos) || !productos.length) return;
+
+  const productosDestino = productos.slice(0, 8);
+  const detalleURL = window.location.pathname.includes("/pages/") ? "./detalle_pro.html" : "./pages/detalle_pro.html";
+
+  contenedores.forEach(contenedor => {
+    contenedor.innerHTML = "";
+
+    productosDestino.forEach(producto => {
+      const card = document.createElement("article");
+      card.className = "box_Producto_new";
+
+      const productUrl = `${detalleURL}?id=${producto.id}`;
+      card.innerHTML = `
+        <div class="box_img_new">
+          <a href="${productUrl}">
+            <img src="${resolverRuta(producto.imagenes?.[0])}" alt="${producto.nombre}">
+          </a>
+        </div>
+        <div class="descripcion_new">
+          <p class="ingreso">New Product</p>
+          <p class="nombre_prod">${producto.nombre}</p>
+          <p class="des_prod">${producto.descripcion}</p>
+          <p class="precio">${formatoPrecio.format(producto.precio)}</p>
+          <button class="btn_comprar" type="button" data-product-id="${producto.id}">COMPRAR</button>
+        </div>
+      `;
+
+      const boton = card.querySelector(".btn_comprar");
+      boton?.addEventListener("click", () => {
+        window.location.href = productUrl;
+      });
+
+      contenedor.appendChild(card);
+    });
+  });
+}
+
 function renderProductos(lista) {
   const contenedor = document.querySelector(".prod_cards");
   if (!contenedor) return;
 
   contenedor.innerHTML = "";
 
-  lista.forEach(producto => {
+  if (!lista.length) {
+    contenedor.innerHTML = '<div class="product_empty_state">No encontramos productos para esta búsqueda.</div>';
+    return;
+  }
 
+  const promoEvery = 14;
+
+  lista.forEach((producto, index) => {
     const card = document.createElement("div");
     card.classList.add("card_prod");
 
@@ -332,6 +378,22 @@ function renderProductos(lista) {
     `;
 
     contenedor.appendChild(card);
+
+    const shouldInsertPromo = (index + 1) % promoEvery === 0 && index !== lista.length - 1;
+    if (shouldInsertPromo) {
+      const promo = document.createElement("article");
+      promo.className = "product_ad_banner";
+      promo.setAttribute("aria-label", "Promoción");
+      promo.innerHTML = `
+        <div class="product_ad_banner__content">
+          <span>ROSITA AMADA</span>
+          <h3>Outlet premium / hasta 40% off</h3>
+          <p>Reediciones, básicos y marcas internacionales para renovar tu closet.</p>
+          <a href="${window.location.pathname.includes("/pages/") ? "./productos.html" : "./pages/productos.html"}">VER OFERTAS</a>
+        </div>
+      `;
+      contenedor.appendChild(promo);
+    }
   });
 
   const contadorResultados = document.querySelector(".resultados_count");
@@ -371,6 +433,7 @@ function renderProductosSimilares(productoActual) {
 document.addEventListener("DOMContentLoaded", () => {
 
   configurarBusqueda();
+  renderNewArrivals();
 
   /* =========================
      📦 LISTADO PRODUCTOS
@@ -744,15 +807,57 @@ document.addEventListener("DOMContentLoaded", () => {
   const textoInfo = document.getElementById("textoInfo");
   const btnPrev = document.getElementById("btnPrev");
   const btnNext = document.getElementById("btnNext");
+  const infoBarText = document.getElementById("infoBarText");
+  const homeEyebrow = document.getElementById("homeEyebrow");
+  const homeTitle = document.getElementById("homeTitle");
+  const homeText = document.getElementById("homeText");
+  const homeCta = document.getElementById("homeCta");
+  const homeHeroImage = document.getElementById("homeHeroImage");
+
+  const defaultTextos = [
+    "Aprovechá el envío gratis exclusivo para miembros!",
+    "10% OFF en tu primera compra",
+    "Pagá en cuotas sin interés",
+    "Ofertas todos los días 🔥"
+  ];
+
+  const storedSiteConfig = (() => {
+    try {
+      return JSON.parse(localStorage.getItem("rositaSiteConfig") || "null") || {};
+    } catch (error) {
+      return {};
+    }
+  })();
+
+  if (infoBarText && storedSiteConfig.infoBarText) {
+    infoBarText.textContent = storedSiteConfig.infoBarText;
+  }
+
+  if (homeEyebrow && storedSiteConfig.homeHero?.eyebrow) {
+    homeEyebrow.textContent = storedSiteConfig.homeHero.eyebrow;
+  }
+
+  if (homeTitle && storedSiteConfig.homeHero?.title) {
+    homeTitle.textContent = storedSiteConfig.homeHero.title;
+  }
+
+  if (homeText && storedSiteConfig.homeHero?.text) {
+    homeText.textContent = storedSiteConfig.homeHero.text;
+  }
+
+  if (homeCta && storedSiteConfig.homeHero?.cta) {
+    homeCta.innerHTML = `${storedSiteConfig.homeHero.cta} <span>↗</span>`;
+  }
+
+  if (homeHeroImage && storedSiteConfig.homeHero?.image) {
+    homeHeroImage.src = storedSiteConfig.homeHero.image;
+    homeHeroImage.alt = "Banner principal de RositaAmada";
+  }
 
   if (textoInfo && btnPrev && btnNext) {
-
-    const textos = [
-      "Aprovechá el envío gratis exclusivo para miembros!",
-      "10% OFF en tu primera compra",
-      "Pagá en cuotas sin interés",
-      "Ofertas todos los días 🔥"
-    ];
+    const textos = Array.isArray(storedSiteConfig.rotatingTexts) && storedSiteConfig.rotatingTexts.length
+      ? storedSiteConfig.rotatingTexts
+      : defaultTextos;
 
     let index = 0;
 
@@ -841,6 +946,7 @@ const btnCompraDirecta = document.querySelector(".btn_compra_directa");
 const btnCheckout = document.getElementById("btn_checkout");
 const btnAplicarDescuento = document.getElementById("btn_aplicar");
 const inputCodigo = document.getElementById("input_codigo");
+const msgDescuento = document.getElementById("msg_descuento");
 
 // ============================
 // 🟢 ABRIR / CERRAR
@@ -865,6 +971,47 @@ function cerrarCarrito() {
 // Eventos básicos
 btnCerrarCarrito?.addEventListener("click", cerrarCarrito);
 carritoOverlay?.addEventListener("click", cerrarCarrito);
+
+btnAplicarDescuento?.addEventListener("click", () => {
+  const codigo = inputCodigo?.value.trim().toUpperCase();
+  const codigosValidos = {
+    ROSITA10: 10,
+    ROSITA20: 20,
+    BARRIO: 15
+  };
+
+  if (!codigo) {
+    msgDescuento.textContent = "Ingresá un código";
+    msgDescuento.style.color = "#d72638";
+    return;
+  }
+
+  if (codigosValidos[codigo]) {
+    descuentoAplicado = codigosValidos[codigo];
+    codigoDescuento = codigo;
+    msgDescuento.textContent = `Cupón ${codigo} aplicado: ${descuentoAplicado}% off`;
+    msgDescuento.style.color = "#1aab8a";
+    renderCarrito();
+  } else {
+    descuentoAplicado = 0;
+    codigoDescuento = "";
+    msgDescuento.textContent = "Código inválido";
+    msgDescuento.style.color = "#d72638";
+    renderCarrito();
+  }
+});
+
+btnCheckout?.addEventListener("click", () => {
+  if (!carrito.length) {
+    mostrarMensajeStock("Tu carrito está vacío");
+    return;
+  }
+
+  const total = document.getElementById("total_carrito")?.textContent || "$0";
+  const mensaje = `Hola RositaAmada, quiero pagar mi carrito de ${carrito.length} producto(s) por ${total}.`;
+  const url = `https://wa.me/5492226688720?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, "_blank");
+});
 
 // Abrir desde navbar
 document.querySelectorAll(".box_carrito, .a_op2_Carrito, .box_carrito_sider")
@@ -925,26 +1072,39 @@ function agregarAlCarrito(producto, cantidad = 1) {
 // 🛒 BOTONES
 // ============================
 btnAgregarCarrito?.addEventListener("click", () => {
- 
-
   const params = new URLSearchParams(window.location.search);
   const id = Number(params.get("id"));
   const producto = productos.find(p => p.id === id);
   if (!producto) return;
 
-  const color = document.querySelector(".color_item.activo")?.style.background || producto.colores[0];
-  const talle = document.querySelector(".btn_talle.activo")?.textContent || producto.talle[0];
+  const color = document.querySelector(".color_item.activo")?.dataset.color || producto.colores?.[0] || "black";
+  const talle = document.querySelector(".btn_talle.activo")?.textContent.trim() || producto.talle?.[0] || "M";
   const cantidad = parseInt(document.querySelector(".cantidad")?.textContent) || 1;
+
+  if (!color || !talle) {
+    mostrarMensajeStock("Elegí un color y un talle");
+    return;
+  }
 
   const stock = obtenerStock(producto, color, talle);
 
-  if (stock === 0) return alert("❌ Sin stock");
-  if (cantidad > stock) return alert(`⚠️ Solo hay ${stock}`);
+  if (stock === 0) {
+    mostrarMensajeStock("❌ No hay stock para esa combinación");
+    return;
+  }
+  if (cantidad > stock) {
+    mostrarMensajeStock(`⚠️ Solo hay ${stock} unidades disponibles`);
+    return;
+  }
 
   producto.colorSeleccionado = color;
   producto.talleSeleccionado = talle;
 
   agregarAlCarrito(producto, cantidad);
+});
+
+btnCompraDirecta?.addEventListener("click", () => {
+  btnAgregarCarrito?.click();
 });
 
 // ============================
@@ -1053,15 +1213,26 @@ function renderCarrito() {
 // 💰 TOTALES
 // ============================
 function actualizarTotales(subtotal) {
-  document.getElementById("subtotal_carrito").textContent = formatoPrecio.format(subtotal);
+  const subtotalEl = document.getElementById("subtotal_carrito");
+  const totalEl = document.getElementById("total_carrito");
+  const descuentoEl = document.getElementById("descuento_carrito");
+  const filaDescuento = document.getElementById("fila_descuento");
+
+  subtotalEl.textContent = formatoPrecio.format(subtotal);
 
   let total = subtotal;
+  let descuento = 0;
 
   if (descuentoAplicado > 0) {
-    total -= subtotal * (descuentoAplicado / 100);
+    descuento = subtotal * (descuentoAplicado / 100);
+    total -= descuento;
+    filaDescuento.style.display = "flex";
+    descuentoEl.textContent = `-$${Math.round(descuento).toLocaleString("es-AR")}`;
+  } else {
+    filaDescuento.style.display = "none";
   }
 
-  document.getElementById("total_carrito").textContent = formatoPrecio.format(total);
+  totalEl.textContent = formatoPrecio.format(total);
 }
 
 // ============================

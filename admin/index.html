@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel privado · RositaAmada</title>
+    <title>Panel de tienda - RositaAmada</title>
     <link rel="stylesheet" href="./styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
   </head>
@@ -11,153 +11,174 @@
     <div class="admin-shell">
       <aside class="admin-sidebar">
         <div class="admin-brand">
-          <span class="admin-brand__label">PRIVATE</span>
+          <span class="admin-brand__label">GESTION DE TIENDA</span>
           <h1>RositaAmada</h1>
-          <small>Panel de productos</small>
+          <small>Panel del dueño</small>
         </div>
-
-        <nav class="admin-nav">
-          <a class="active" href="#importar">Importar</a>
-          <a href="#preview">Vista previa</a>
-          <a href="#json">JSON exportado</a>
+        <nav class="admin-nav" aria-label="Sectores del panel">
+          <a class="active" href="#acceso">Acceso</a>
+          <div class="admin-nav-group"><span>CATÁLOGO</span><a href="#productos">Importar Excel</a><a href="#agregar-producto">Agregar producto</a><a href="#editar-producto">Editar producto</a></div>
+          <div class="admin-nav-group"><span>CONTENIDO DE LA WEB</span><a href="#contenido">Banners y textos</a></div>
+          <div class="admin-nav-group"><span>CONTROL</span><a href="#stock-total">Todo el stock</a><a href="#json">Respaldo JSON</a></div>
         </nav>
+        <button id="btnLogout" class="btn btn-sidebar" type="button" hidden>Cerrar sesion</button>
       </aside>
 
       <main class="admin-main">
-        <section class="admin-card" id="importar">
+        <section class="admin-card" id="acceso">
           <div class="card-header">
-            <div>
-              <p class="eyebrow">Carga de datos</p>
-              <h2>Importar archivo Excel</h2>
-            </div>
+            <div><p class="eyebrow">Seguridad</p><h2>Acceso del dueño</h2></div>
+            <span id="authBadge" class="badge">Sin iniciar</span>
           </div>
-
-          <div class="upload-box">
-            <label class="upload-label" for="excelFile">
-              <input id="excelFile" type="file" accept=".csv, .xlsx, .xls" />
-              <span>Elegí un archivo Excel o CSV</span>
-            </label>
-          </div>
-
-          <div class="admin-grid-two">
-            <label class="field">
-              <span>Título promocional</span>
-              <input id="promoTitleInput" type="text" placeholder="Ej: Novedades del mes" />
-            </label>
-
-            <label class="field">
-              <span>Imagen promocional</span>
-              <input id="promoImageInput" type="url" placeholder="https://.../banner.jpg" />
-            </label>
-          </div>
-
-          <div class="controls-row">
-            <button id="btnPreview" class="btn btn-primary" type="button">Procesar archivo</button>
-            <button id="btnSaveLocal" class="btn btn-secondary" type="button">Guardar en localStorage</button>
-            <button id="btnDownloadJson" class="btn btn-dark" type="button">Descargar JSON</button>
-          </div>
-
-          <div class="status-box">
-            <p id="statusText">Sin archivo cargado todavía.</p>
-          </div>
+          <form id="loginForm" class="admin-grid-two">
+            <label class="field"><span>Usuario o email</span><input id="loginEmail" type="text" autocomplete="username" required /></label>
+            <label class="field"><span>Contraseña</span><input id="loginPassword" type="password" autocomplete="current-password" required /></label>
+            <div class="controls-row"><button class="btn btn-primary" type="submit">Entrar al panel</button></div>
+          </form>
+          <div id="authMessage" class="status-box"><p>Iniciá sesión para modificar la tienda.</p></div>
         </section>
 
-        <section class="admin-card" id="site-content">
-          <div class="card-header">
-            <div>
-              <p class="eyebrow">Contenido web</p>
-              <h2>Modificar home y promos</h2>
+        <div id="panelContent" hidden>
+          <section class="panel-overview" aria-label="Cómo usar el panel">
+            <div><p class="eyebrow">Ruta rápida</p><h2>Administrá tu tienda en orden</h2><p>Elegí una tarea del menú o seguí los pasos: cargar productos, revisar el stock y actualizar la web.</p></div>
+            <div class="overview-steps"><span><b>1</b> Cargar</span><span><b>2</b> Revisar</span><span><b>3</b> Publicar</span></div>
+          </section>
+          <section class="admin-card" id="productos">
+            <div class="card-header">
+              <div><p class="eyebrow">Paso 1 · Catálogo</p><h2>Importar productos desde Excel</h2></div>
+              <span id="summaryBadge" class="badge">0 productos</span>
             </div>
-          </div>
-
-          <div class="admin-grid-two">
-            <label class="field">
-              <span>Imagen principal del home</span>
-              <input id="homeBannerImageInput" type="url" placeholder="https://.../banner-home.jpg" />
-            </label>
-
-            <label class="field">
-              <span>Eyebrow del home</span>
-              <input id="homeEyebrowInput" type="text" placeholder="ROSITAAMADA · CURATED STREETWEAR" />
-            </label>
-
-            <label class="field">
-              <span>Título principal del home</span>
-              <input id="homeTitleInput" type="text" placeholder="Vestite con intención." />
-            </label>
-
-            <label class="field">
-              <span>Texto de la home</span>
-              <input id="homeTextInput" type="text" placeholder="Marcas internacionales, básicos premium..." />
-            </label>
-
-            <label class="field">
-              <span>Texto del botón</span>
-              <input id="homeCtaInput" type="text" placeholder="EXPLORAR COLECCIÓN" />
-            </label>
-
-            <label class="field">
-              <span>Texto de la barra superior</span>
-              <input id="infoBarTextInput" type="text" placeholder="Envíos a todo el país · cuotas sin interés" />
-            </label>
-          </div>
-
-          <div class="field" style="margin-top: 16px;">
-            <span>Mensajes rotativos (separados por | )</span>
-            <textarea id="rotatingTextsInput" rows="4" placeholder="Aprovechá el envío gratis | 10% OFF ..."></textarea>
-          </div>
-
-          <div class="controls-row">
-            <button id="btnSaveSiteConfig" class="btn btn-primary" type="button">Guardar contenido web</button>
-          </div>
-        </section>
-
-        <section class="admin-card" id="preview">
-          <div class="card-header">
-            <div>
-              <p class="eyebrow">Resultado</p>
-              <h2>Vista previa</h2>
+            <p class="help-text">Usá esta opción cuando tengas muchos productos. Una fila representa un producto y luego podés revisarlo en la tabla antes de publicarlo.</p>
+            <div class="upload-box"><label class="upload-label" for="excelFile"><input id="excelFile" type="file" accept=".csv,.xlsx,.xls" /><span>Elegí Excel o CSV</span></label></div>
+            <div class="controls-row">
+              <button id="btnPreview" class="btn btn-primary" type="button">1. Revisar archivo</button>
+              <button id="btnSaveProducts" class="btn btn-secondary" type="button">2. Publicar catálogo</button>
+              <button id="btnSaveLocal" class="btn btn-muted" type="button">Guardar borrador</button>
+              <button id="btnDownloadJson" class="btn btn-dark" type="button">Descargar respaldo</button>
             </div>
-            <span id="summaryBadge" class="badge">0 productos</span>
-          </div>
+            <div class="status-box"><p id="statusText">Cargando productos guardados...</p></div>
+          </section>
 
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
-                  <th>Marca</th>
-                  <th>Precio</th>
-                  <th>Colores</th>
-                  <th>Talles</th>
-                  <th>Stock</th>
-                  <th>% desc.</th>
-                  <th>Nuevo</th>
-                </tr>
-              </thead>
-              <tbody id="previewTableBody">
-                <tr class="empty-row">
-                  <td colspan="9">Todavía no hay productos cargados.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="admin-card" id="json">
-          <div class="card-header">
-            <div>
-              <p class="eyebrow">Salida</p>
-              <h2>JSON generado</h2>
+          <section class="admin-card" id="agregar-producto">
+            <div class="card-header">
+              <div><p class="eyebrow">Paso 1 · Catálogo</p><h2>Agregar un producto</h2></div>
+              <span class="badge">Nuevo producto</span>
             </div>
-          </div>
+            <p class="help-text">Usá esta opción para sumar un solo producto. Completá sus datos, variantes y fotos; al guardarlo quedará publicado en la web.</p>
+            <form id="manualProductForm" class="admin-grid-two">
+              <label class="field"><span>Código o SKU *</span><input id="manualProductId" required placeholder="REM-001" /></label>
+              <label class="field"><span>Nombre del producto *</span><input id="manualProductName" required placeholder="Remera básica" /></label>
+              <label class="field"><span>Marca</span><select id="manualProductBrand" required><option value="">Seleccioná una marca</option></select></label>
+              <label class="field"><span>Categoría</span><select id="manualProductCategory" required><option value="">Seleccioná una categoría</option></select></label>
+              <label class="field"><span>Precio</span><input id="manualProductPrice" type="number" min="0" placeholder="45000" /></label>
+              <label class="field"><span>Stock total calculado</span><input id="manualProductStock" type="number" min="0" readonly /></label>
+              <label class="field field-wide"><span>Descripción</span><textarea id="manualProductDescription" rows="3"></textarea></label>
+              <label class="field"><span>Colores adicionales CSS en inglés</span><input id="manualProductColors" placeholder="green, navy, magenta" /></label>
+              <div class="field field-wide"><span>Stock por variante <small>Elegí el talle y escribí la cantidad disponible. Ejemplo: Talle M · Cantidad 3.</small></span><div class="variant-headings"><span>Color</span><span>Talle</span><span>Cantidad</span><span></span></div><div id="manualVariants" class="variant-list"></div><button id="btnAddVariant" class="btn btn-muted" type="button">Agregar talle y cantidad</button></div>
+              <div class="field field-wide"><span>Fotos del producto <small>Elegí una foto por campo · JPG, PNG o WEBP · ideal: 1000 x 1250 px</small></span><div class="product-image-inputs"><label><strong>Foto 1 · Principal</strong><input id="manualProductImage1" type="file" accept="image/jpeg,image/png,image/webp" /></label><label><strong>Foto 2 · Detalle</strong><input id="manualProductImage2" type="file" accept="image/jpeg,image/png,image/webp" /></label><label><strong>Foto 3 · Detalle</strong><input id="manualProductImage3" type="file" accept="image/jpeg,image/png,image/webp" /></label><label><strong>Foto 4 · Detalle</strong><input id="manualProductImage4" type="file" accept="image/jpeg,image/png,image/webp" /></label></div></div>
+              <label class="field field-wide"><span>URLs de imágenes existentes, separadas por coma</span><input id="manualProductImages" placeholder="https://.../producto.jpg" /></label>
+              <label class="check-field"><input id="manualProductActive" type="checkbox" checked /> Disponible en la tienda</label>
+              <label class="check-field"><input id="manualProductNew" type="checkbox" /> Mostrar en New Arrivals</label>
+              <label class="check-field"><input id="manualProductSale" type="checkbox" /> Mostrar en Sale</label>
+              <label class="field"><span>Descuento (%)</span><input id="manualProductDiscount" type="number" min="0" max="100" placeholder="20" /></label>
+              <div class="controls-row field-wide"><button class="btn btn-primary" type="submit">Agregar producto al stock</button><button id="btnClearManualProduct" class="btn btn-muted" type="button">Limpiar formulario</button></div>
+            </form>
+            <div id="manualProductMessage" class="status-box" hidden><p></p></div>
+            <div class="recent-products-block">
+              <div class="content-sector__heading"><h3>Últimos 5 productos agregados manualmente</h3><p>Solo aparecen productos que ya fueron guardados y publicados en la web.</p></div>
+              <div id="recentManualProducts" class="recent-products-line"><span class="empty-recent-products">Todavía no hay productos manuales publicados.</span></div>
+            </div>
+          </section>
 
-          <textarea id="jsonOutput" readonly placeholder="El JSON final aparecerá aquí..."></textarea>
-        </section>
+          <section class="admin-card" id="editar-producto">
+            <div class="card-header"><div><p class="eyebrow">Paso 2 · Catálogo</p><h2>Editar un producto existente</h2></div></div>
+            <p class="help-text">Escribí el código del producto para cargar sus datos actuales y modificar precio, stock, variantes o fotos.</p><div class="lookup-row"><input id="productCodeInput" type="search" placeholder="Ejemplo: REM-001" /><button id="btnFindProduct" class="btn btn-primary" type="button">Cargar ficha</button></div>
+            <form id="productForm" class="admin-grid-two" hidden>
+              <label class="field"><span>Codigo</span><input id="productIdInput" required /></label>
+              <label class="field"><span>Nombre</span><input id="productNameInput" required /></label>
+              <label class="field"><span>Marca</span><select id="productBrandInput"><option value="">Seleccioná una marca</option></select></label>
+              <label class="field"><span>Categoría</span><select id="productCategoryInput"><option value="">Seleccioná una categoría</option></select></label>
+              <label class="field"><span>Precio</span><input id="productPriceInput" type="number" min="0" /></label>
+              <label class="field"><span>Stock total calculado</span><input id="productStockInput" type="number" min="0" readonly /></label>
+              <label class="field field-wide"><span>Descripcion</span><textarea id="productDescriptionInput" rows="3"></textarea></label>
+              <div class="field field-wide"><span>Stock por color y talle <small>Revisá o modificá la cantidad de cada combinación.</small></span><div class="variant-headings"><span>Color</span><span>Talle</span><span>Cantidad</span><span></span></div><div id="productVariants" class="variant-list"></div><button id="btnAddEditVariant" class="btn btn-muted" type="button">Agregar talle y cantidad</button></div>
+              <div class="field field-wide"><span>Fotos del producto <small>La foto 1 se muestra en productos; las fotos 2 a 4 en detalle. Si no elegís archivos nuevos, se conservan las fotos actuales.</small></span><div id="productCurrentImages" class="current-images">No hay fotos cargadas.</div><div class="product-image-inputs"><label><strong>Foto 1 · Principal</strong><input id="productImage1" type="file" accept="image/jpeg,image/png,image/webp" /></label><label><strong>Foto 2 · Detalle</strong><input id="productImage2" type="file" accept="image/jpeg,image/png,image/webp" /></label><label><strong>Foto 3 · Detalle</strong><input id="productImage3" type="file" accept="image/jpeg,image/png,image/webp" /></label><label><strong>Foto 4 · Detalle</strong><input id="productImage4" type="file" accept="image/jpeg,image/png,image/webp" /></label></div><input id="productImagesInput" type="hidden" /></div>
+              <label class="check-field"><input id="productActiveInput" type="checkbox" /> Disponible en la tienda</label>
+              <label class="check-field"><input id="productNewInput" type="checkbox" /> Mostrar en New Arrivals / Novedades</label>
+              <label class="check-field"><input id="productSaleInput" type="checkbox" /> Mostrar en Sale</label>
+              <label class="field"><span>Descuento (%)</span><input id="productDiscountInput" type="number" min="0" max="100" /></label>
+              <div class="controls-row field-wide"><button class="btn btn-primary" type="submit">Guardar ficha en Firebase</button></div>
+            </form>
+            <div id="productMessage" class="status-box" hidden><p></p></div>
+          </section>
+
+          <section class="admin-card" id="contenido">
+            <div class="card-header"><div><p class="eyebrow">Paso 3 · Contenido</p><h2>Modificar lo que ve el cliente</h2></div></div>
+            <section class="content-sector">
+              <div class="content-sector__heading"><h3>Banner principal del home</h3><p>Es la imagen grande que aparece al entrar a la página.</p></div>
+              <div class="admin-grid-two">
+                <label class="field field-wide"><span>Archivo del banner <small>JPG o WEBP · medida ideal: 1920 x 720 px</small></span><input id="homeBannerFile" type="file" accept="image/jpeg,image/webp,image/png" /></label>
+                <label class="field"><span>Imagen publicada actualmente</span><input id="homeBannerImageInput" type="url" readonly /></label>
+                <div id="homeBannerPreview" class="image-preview" aria-live="polite">Sin imagen nueva seleccionada.</div>
+              </div>
+            </section>
+            <section class="content-sector">
+              <div class="content-sector__heading"><h3>Textos del home</h3><p>Estos textos aparecen junto al banner principal.</p></div>
+              <div class="admin-grid-two">
+              <label class="field"><span>Texto pequeño del home</span><input id="homeEyebrowInput" /></label>
+              <label class="field"><span>Titulo principal</span><input id="homeTitleInput" /></label>
+              <label class="field"><span>Texto descriptivo</span><input id="homeTextInput" /></label>
+              <label class="field"><span>Texto del boton</span><input id="homeCtaInput" /></label>
+              <label class="field"><span>Barra superior</span><input id="infoBarTextInput" /></label>
+              <label class="field field-wide"><span>Mensajes rotativos, separados por |</span><textarea id="rotatingTextsInput" rows="3"></textarea></label>
+              </div>
+            </section>
+            <section class="content-sector">
+              <div class="content-sector__heading"><h3>Banner de categorías y selector</h3><p>Elegí una categoría para modificar el banner que aparece sobre su listado de productos.</p></div>
+              <div class="admin-grid-two">
+                <label class="field"><span>Categoría del banner</span><select id="categoryBannerSelector"><option value="todos">Todos los productos</option><option value="remeras">Remeras</option><option value="zapatillas">Zapatillas</option><option value="buzos">Buzos</option><option value="camperas">Camperas</option><option value="pantalones">Pantalones</option><option value="accesorios">Accesorios</option></select></label>
+                <label class="field"><span>Archivo del banner <small>JPG o WEBP · medida ideal: 1600 x 520 px</small></span><input id="categoryBannerFile" type="file" accept="image/jpeg,image/webp,image/png" /></label>
+                <label class="field"><span>Etiqueta superior</span><input id="categoryBannerLabelInput" placeholder="CATEGORIA / REMERAS" /></label>
+                <label class="field"><span>Título del banner</span><input id="categoryBannerTitleInput" placeholder="Básicos que hablan." /></label>
+                <label class="field field-wide"><span>Texto del banner</span><input id="categoryBannerTextInput" placeholder="Remeras para todos los días" /></label>
+              </div>
+              <div id="categoryBannerPreview" class="image-preview">Sin imagen nueva seleccionada.</div>
+              <div class="controls-row"><button id="btnSaveCategoryBanner" class="btn btn-secondary" type="button">Guardar este banner de categoría</button></div>
+            </section>
+            <section class="content-sector">
+              <div class="content-sector__heading"><h3>Banner promocional de Sale</h3><p>Es la pieza que anuncia ofertas dentro del catálogo.</p></div>
+              <div class="admin-grid-two">
+                <label class="field"><span>Título de la promoción</span><input id="promoTitleInput" placeholder="Outlet premium / hasta 40% off" /></label>
+                <label class="field"><span>Archivo promocional <small>JPG o WEBP · medida ideal: 1200 x 500 px</small></span><input id="promoImageFile" type="file" accept="image/jpeg,image/webp,image/png" /></label>
+                <label class="field field-wide"><span>Imagen publicada actualmente</span><input id="promoImageInput" type="url" readonly /></label>
+              </div>
+              <div id="promoImagePreview" class="image-preview">Sin imagen nueva seleccionada.</div>
+            </section>
+            <section class="content-sector">
+              <div class="content-sector__heading"><h3>Flyers dentro del catálogo</h3><p>Agregá todos los flyers que quieras. Aparecerá uno cada 5 productos mientras el cliente baja por la página.</p></div>
+              <div class="admin-grid-two">
+                <label class="field"><span>Seleccionar flyer <small>JPG, PNG o WEBP · ideal: 1000 x 1250 px · ocupa el espacio de una card</small></span><input id="catalogFlyerFile" type="file" accept="image/jpeg,image/png,image/webp" /></label>
+                <div class="controls-row flyer-add-control"><button id="btnAddCatalogFlyer" class="btn btn-secondary" type="button">Agregar flyer a la lista</button></div>
+              </div>
+              <div id="catalogFlyersList" class="catalog-flyers-list"><span class="empty-recent-products">Todavía no hay flyers agregados.</span></div>
+            </section>
+            <div class="controls-row">
+              <button id="btnSaveSiteConfig" class="btn btn-primary" type="button">Guardar banners y textos</button>
+            </div>
+          </section>
+
+          <section class="admin-card" id="stock-total">
+            <div class="card-header"><div><p class="eyebrow">Paso 2 · Control</p><h2>Revisar todo el stock</h2></div><span id="stockCountBadge" class="badge">0 productos</span></div>
+            <div class="stock-tools"><label class="field"><span>Buscar en el stock</span><input id="stockSearchInput" type="search" placeholder="Código, nombre, marca o categoría" /></label><label class="field stock-sort"><span>Ordenar por</span><select id="stockSortSelect"><option value="codigo-asc">Código: A-Z</option><option value="nombre-asc">Nombre: A-Z</option><option value="precio-asc">Precio: menor a mayor</option><option value="precio-desc">Precio: mayor a menor</option><option value="stock-desc">Stock: mayor a menor</option><option value="stock-asc">Stock: menor a mayor</option><option value="sale-desc">Productos en Sale primero</option><option value="novedad-desc">Novedades primero</option></select></label><span id="stockPageSummary" class="stock-page-summary"></span></div>
+            <div class="table-wrap"><table><thead><tr><th>Codigo</th><th>Producto</th><th>Categoria</th><th>Precio</th><th>Colores</th><th>Stock</th><th>Novedad</th><th>Sale</th><th>Activo</th></tr></thead><tbody id="previewTableBody"><tr class="empty-row"><td colspan="9">Todavía no hay productos cargados.</td></tr></tbody></table></div>
+            <div id="stockPagination" class="stock-pagination" aria-label="Paginación del stock"></div>
+          </section>
+
+          <section class="admin-card admin-card-technical" id="json"><div class="card-header"><div><p class="eyebrow">Opcional · Respaldo</p><h2>JSON del catálogo</h2></div></div><p class="help-text">Esta sección es técnica. No necesitás modificarla para administrar la tienda.</p><textarea id="jsonOutput" readonly placeholder="El JSON final aparecerá aquí..."></textarea></section>
+        </div>
       </main>
     </div>
-
-    <script src="./app.js"></script>
+    <div id="panelToast" class="panel-toast" role="status" aria-live="polite"></div>
+    <script type="module" src="./app.js"></script>
   </body>
 </html>

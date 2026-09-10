@@ -1,3 +1,5 @@
+import { loadProducts, loadCatalogSnapshot, loadSiteConfig, loadPromoBanner } from "./admin/firebase-setup.js";
+
 /* =========================  
    🧭 MENU
 ========================= */
@@ -66,7 +68,7 @@ if (btnMarcas && listaMarcas) {
 
 /*productos*/
 
-const productos = [
+let productos = [
 { id: 1, cantidad:"5", nombre: "Remera Adidas Originals", descripcion: "Remera de algodón estampada", precio: 45000, talle: ["S","M","L"], colores:["black","white","red"], stock: true, categoria: "Remeras", marca: "ADIDAS", imagenes: ["/fotos de wsp/zapa_1.jpeg","/fotos de wsp/zapa_2.jpeg","/fotos de wsp/zapa_3.jpeg"] ,stock_detalle: {  black: { S: 2, M: 0, L: 3 }, white: { S: 5, M: 2, L: 1 }, red: { S: 0, M: 1, L: 0 }  } },
 { id: 2, cantidad:"5", nombre: "Remera Nike Club", descripcion: "Remera básica deportiva", precio: 42000, talle: ["S","M","L"], colores:["black","gray","white"], stock: true, categoria: "Remeras", marca: "NIKE", imagenes: ["/fotos de wsp/zapa_1.jpeg","/fotos de wsp/zapa_2.jpeg","/fotos de wsp/zapa_3.jpeg"]  ,stock_detalle: {  black: { S: 2, M: 0, L: 3 }, white: { S: 5, M: 2, L: 1 }, red: { S: 0, M: 1, L: 0 }  }},
 { id: 3, cantidad:"5", nombre: "Remera Puma Essential", descripcion: "Remera urbana lisa", precio: 40000, talle: ["M","L"], colores:["black","green"], stock: true, categoria: "Remeras", marca: "PUMA", imagenes: ["/fotos de wsp/zapa_1.jpeg","/fotos de wsp/zapa_2.jpeg","/fotos de wsp/zapa_3.jpeg"] ,stock_detalle: {  black: { S: 2, M: 0, L: 3 }, white: { S: 5, M: 2, L: 1 }, red: { S: 0, M: 1, L: 0 }  } },
@@ -230,6 +232,7 @@ function actualizarBannerCategoria(categoria = "TODOS") {
   const texto = banner.querySelector("span");
 
   banner.className = `banner_prod ${contenido.clase}`;
+  banner.style.backgroundImage = contenido.image ? `url("${contenido.image}")` : "";
   if (etiqueta) etiqueta.textContent = contenido.etiqueta;
   if (titulo) titulo.innerHTML = contenido.titulo.replace(" ", "<br>");
   if (texto) texto.textContent = contenido.texto;
@@ -307,7 +310,8 @@ function renderNewArrivals() {
   const contenedores = document.querySelectorAll(".box_productos_new");
   if (!contenedores.length || !Array.isArray(productos) || !productos.length) return;
 
-  const productosDestino = productos.slice(0, 8);
+  const novedades = productos.filter(producto => producto.nuevo || producto.new_arrivals);
+  const productosDestino = (novedades.length ? novedades : productos).slice(0, 8);
   const detalleURL = window.location.pathname.includes("/pages/") ? "./detalle_pro.html" : "./pages/detalle_pro.html";
 
   contenedores.forEach(contenedor => {
@@ -354,16 +358,21 @@ function renderProductos(lista) {
     return;
   }
 
-  const promoEvery = 14;
+  const promoEvery = 5;
 
   lista.forEach((producto, index) => {
     const card = document.createElement("div");
     card.classList.add("card_prod");
+    const descuento = Number(producto.descuento) || 0;
+    const etiquetaSale = descuento > 0
+      ? `<span class="sale_ribbon">SALE</span><span class="sale_discount">${descuento}%</span>`
+      : "";
 
     card.innerHTML = `
       <a class="link_productos" href="${window.location.pathname.includes("/pages/") ? "./detalle_pro.html" : "./pages/detalle_pro.html"}?id=${producto.id}">
         <div class="box_img_prod">
           <img class="img_prod" src="${resolverRuta(producto.imagenes?.[0]) || './img/default.jpg'}" alt="${producto.nombre}">
+          ${etiquetaSale}
         </div>
       </a>
 
@@ -379,19 +388,14 @@ function renderProductos(lista) {
 
     contenedor.appendChild(card);
 
-    const shouldInsertPromo = (index + 1) % promoEvery === 0 && index !== lista.length - 1;
+    const flyers = window.catalogFlyers || [];
+    const flyerIndex = Math.floor((index + 1) / promoEvery) - 1;
+    const shouldInsertPromo = (index + 1) % promoEvery === 0 && flyerIndex < flyers.length;
     if (shouldInsertPromo) {
       const promo = document.createElement("article");
-      promo.className = "product_ad_banner";
-      promo.setAttribute("aria-label", "Promoción");
-      promo.innerHTML = `
-        <div class="product_ad_banner__content">
-          <span>ROSITA AMADA</span>
-          <h3>Outlet premium / hasta 40% off</h3>
-          <p>Reediciones, básicos y marcas internacionales para renovar tu closet.</p>
-          <a href="${window.location.pathname.includes("/pages/") ? "./productos.html" : "./pages/productos.html"}">VER OFERTAS</a>
-        </div>
-      `;
+      promo.className = "product_ad_banner catalog_flyer_card";
+      promo.setAttribute("aria-label", "Flyer promocional");
+      promo.innerHTML = `<img src="${flyers[flyerIndex].url}" alt="Flyer promocional">`;
       contenedor.appendChild(promo);
     }
   });
@@ -427,10 +431,113 @@ function renderProductosSimilares(productoActual) {
 
 
 /* =========================
+   ☁️ DATOS REMOTOS
+========================= */
+
+async function cargarDatosRemotos() {
+  try {
+    const isLocalHost = ["localhost", "127.0.0.1", ""].includes(window.location.hostname);
+    const localCatalog = JSON.parse(localStorage.getItem("rositaProductosImportados") || '{"productos":[]}');
+    const hasLocalCatalog = Array.isArray(localCatalog.productos) && localCatalog.productos.length;
+
+    if (!localStorage.getItem("rositaCatalogoBase") && productos.length) {
+      localStorage.setItem("rositaCatalogoBase", JSON.stringify({ productos }));
+    }
+
+    if (isLocalHost && hasLocalCatalog && (sessionStorage.getItem("rositaDemoMode") === "true" || localStorage.getItem("rositaDemoMode") === "true")) {
+        const baseCatalog = JSON.parse(localStorage.getItem("rositaCatalogoBase") || '{"productos":[]}');
+        const productsById = new Map();
+        [...(baseCatalog.productos || []), ...localCatalog.productos].forEach((producto) => {
+          productsById.set(String(producto.id), producto);
+        });
+        productos = [...productsById.values()]
+          .filter(producto => producto.activo !== false)
+          .map(producto => ({
+            ...producto,
+            id: Number.isNaN(Number(producto.id)) ? producto.id : Number(producto.id),
+            cantidad: producto.cantidad ?? producto.stock ?? 0,
+            talle: producto.talle || producto.talles || [],
+            talles: producto.talles || producto.talle || [],
+            colores: producto.colores || Object.keys(producto.stock_detalle || {}),
+            imagenes: Array.isArray(producto.imagenes) ? producto.imagenes : []
+          }));
+        const localSiteConfig = JSON.parse(localStorage.getItem("rositaSiteConfig") || "{}");
+        window.catalogFlyers = Array.isArray(localSiteConfig.catalogFlyers) ? localSiteConfig.catalogFlyers : [];
+        return;
+    }
+
+    const [productosRemotos, catalogSnapshot, siteConfig, promoBanner] = await Promise.all([
+      loadProducts(),
+      loadCatalogSnapshot(),
+      loadSiteConfig(),
+      loadPromoBanner()
+    ]);
+
+    const productosPublicados = catalogSnapshot?.productos?.length
+      ? catalogSnapshot.productos
+      : productosRemotos;
+
+    if (productosPublicados.length) {
+      productos = productosPublicados
+        .filter(producto => producto.activo !== false)
+        .map(producto => ({
+          ...producto,
+          id: Number.isNaN(Number(producto.id)) ? producto.id : Number(producto.id),
+          cantidad: producto.cantidad ?? producto.stock ?? 0,
+          talle: producto.talle || producto.talles || [],
+          talles: producto.talles || producto.talle || [],
+          colores: producto.colores || Object.keys(producto.stock_detalle || {}),
+          imagenes: Array.isArray(producto.imagenes) ? producto.imagenes : []
+        }));
+    }
+
+    const hero = siteConfig.homeHero || {};
+    window.catalogFlyers = Array.isArray(siteConfig.catalogFlyers) ? siteConfig.catalogFlyers : [];
+    if (siteConfig.categoryBanners && typeof siteConfig.categoryBanners === "object") {
+      Object.assign(bannersCategorias, siteConfig.categoryBanners);
+    }
+    const homeImage = document.getElementById("homeHeroImage");
+    const homeEyebrow = document.getElementById("homeEyebrow");
+    const homeTitle = document.getElementById("homeTitle");
+    const homeText = document.getElementById("homeText");
+    const homeCta = document.getElementById("homeCta");
+    const infoBar = document.getElementById("infoBarText");
+
+    if (homeImage && hero.image) homeImage.src = hero.image;
+    if (homeEyebrow && hero.eyebrow) homeEyebrow.textContent = hero.eyebrow;
+    if (homeTitle && hero.title) homeTitle.textContent = hero.title;
+    if (homeText && hero.text) homeText.textContent = hero.text;
+    if (homeCta && hero.cta) homeCta.childNodes[0].textContent = `${hero.cta} `;
+    if (infoBar && siteConfig.infoBarText) infoBar.textContent = siteConfig.infoBarText;
+
+    const promoTitle = promoBanner.title || promoBanner.promoTitle;
+    const promoImage = promoBanner.image || promoBanner.promoImage;
+    const promoTitleElement = document.querySelector(".product_ad_banner h3");
+    const promoImageElement = document.querySelector(".product_ad_banner img");
+    if (promoTitleElement && promoTitle) promoTitleElement.textContent = promoTitle;
+    if (promoImageElement && promoImage) promoImageElement.src = promoImage;
+  } catch (error) {
+    console.warn("Se usa el catálogo local porque Firebase no está disponible.", error);
+  }
+
+  if (!localStorage.getItem("rositaCatalogoBase") && productos.length) {
+    localStorage.setItem("rositaCatalogoBase", JSON.stringify({ productos }));
+  }
+}
+
+window.addEventListener("storage", (event) => {
+  if (event.key === "rositaProductosImportados" && localStorage.getItem("rositaDemoMode") === "true") {
+    window.location.reload();
+  }
+});
+
+/* =========================
    🚀 INIT GENERAL
 ========================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+
+  await cargarDatosRemotos();
 
   configurarBusqueda();
   renderNewArrivals();
@@ -447,6 +554,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const marcaURL = params.get("marca");
     const busquedaURL = params.get("q")?.trim().toLowerCase();
     const categoriaURL = params.get("categoria") || "TODOS";
+    const saleURL = params.get("sale") === "1";
 
     let lista = productos;
 
@@ -466,6 +574,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (categoriaURL.toUpperCase() !== "TODOS") {
       lista = lista.filter(producto => producto.categoria.toLowerCase() === categoriaURL.toLowerCase());
+    }
+
+    if (saleURL) {
+      lista = lista.filter(producto => producto.sale || Number(producto.descuento) > 0);
     }
 
     const selectorCategoria = document.getElementById("filtro_categoria");
@@ -538,7 +650,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
 
-    const producto = productos.find(p => p.id === Number(id));
+    const producto = productos.find(p => String(p.id) === String(id));
     if (!producto) return;
 
     renderProductosSimilares(producto);
@@ -571,6 +683,8 @@ document.addEventListener("DOMContentLoaded", () => {
     marcaDetalle.forEach(el => { el.textContent = producto.marca || "ROSITAAMADA SELECT"; });
     const nombreDetalle = document.querySelector(".producto_nombre_detail");
     if (nombreDetalle) nombreDetalle.textContent = producto.nombre;
+    const codigoDetalle = document.getElementById("productoCodigoDetalle");
+    if (codigoDetalle) codigoDetalle.textContent = producto.id;
     const precioDetalle = document.querySelector(".producto_precio");
     if (precioDetalle) precioDetalle.textContent = formatoPrecio.format(producto.precio);
 
@@ -1073,8 +1187,8 @@ function agregarAlCarrito(producto, cantidad = 1) {
 // ============================
 btnAgregarCarrito?.addEventListener("click", () => {
   const params = new URLSearchParams(window.location.search);
-  const id = Number(params.get("id"));
-  const producto = productos.find(p => p.id === id);
+  const id = params.get("id");
+  const producto = productos.find(p => String(p.id) === String(id));
   if (!producto) return;
 
   const color = document.querySelector(".color_item.activo")?.dataset.color || producto.colores?.[0] || "black";
@@ -1138,6 +1252,7 @@ function renderCarrito() {
     div.innerHTML = `
       <img src="${item.imagen}" alt="${item.nombre}">
       <p>${item.nombre}</p>
+      <p class="carrito_codigo">Código: ${item.id}</p>
       <p>${item.color} - ${item.talle}</p>
       <p>${formatoPrecio.format(item.precio)}</p>
 

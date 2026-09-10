@@ -22,7 +22,7 @@ import {
   getDownloadURL
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-import { firebaseConfig } from "../firebase-config.example.js";
+import { firebaseConfig } from "../firebase-config.js";
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
@@ -56,15 +56,26 @@ export async function saveProduct(product) {
 }
 
 export async function saveProducts(products) {
-  for (const product of products) {
-    await saveProduct(product);
-  }
+  await Promise.all(products.map(saveProduct));
+}
+
+export async function saveCatalogSnapshot(products) {
+  await setDoc(doc(db, "catalog", "current"), {
+    productos: products,
+    updatedAt: new Date().toISOString(),
+    total: products.length
+  });
 }
 
 export async function loadProducts() {
   const q = query(collection(db, "productos"), orderBy("nombre"));
   const snapshot = await getDocs(q);
   return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+}
+
+export async function loadCatalogSnapshot() {
+  const snapshot = await getDoc(doc(db, "catalog", "current"));
+  return snapshot.exists() ? snapshot.data() : null;
 }
 
 export async function uploadImage(file, path) {
@@ -75,4 +86,9 @@ export async function uploadImage(file, path) {
 
 export async function savePromoBanner(data) {
   await setDoc(doc(db, "siteConfig", "promoBanner"), data, { merge: true });
+}
+
+export async function loadPromoBanner() {
+  const refDoc = await getDoc(doc(db, "siteConfig", "promoBanner"));
+  return refDoc.exists() ? refDoc.data() : {};
 }

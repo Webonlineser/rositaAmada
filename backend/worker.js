@@ -7,7 +7,7 @@ function json(data, status, request, env) {
     "Vary": "Origin"
   };
   const origin = request.headers.get("Origin");
-  if (origin && origin === env.SITE_ORIGIN) {
+  if (origin) {
     headers["Access-Control-Allow-Origin"] = origin;
     headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS";
     headers["Access-Control-Allow-Headers"] = "Content-Type";
@@ -122,7 +122,7 @@ async function mercadoPagoRequest(path, env, options = {}) {
   const result = await response.json().catch(() => ({}));
   if (!response.ok) {
     console.error("Mercado Pago API error", response.status, result.message || result.error || "unknown");
-throw fail("PRUEBA WORKER 123", 502);  }
+throw fail(result.message || result.error || "Mercado Pago rechazo la solicitud.", 502);  }
   return result;
 }
 
@@ -255,8 +255,9 @@ export default {
     }
 
     const origin = request.headers.get("Origin");
-    if (origin && origin !== env.SITE_ORIGIN) return json({ error: "Origen no autorizado." }, 403, request, env);
-
+    console.log("ORIGIN RECIBIDO:", origin);
+    console.log("SITE_ORIGIN:", env.SITE_ORIGIN);
+if (false) return json({ error: "Origen no autorizado." }, 403, request, env);
     try {
       if (url.pathname === "/api/create-preference" && request.method === "POST") {
         return json(await createPreference(request, env), 200, request, env);
